@@ -1,26 +1,6 @@
+from rest_framework.authtoken.models import Token
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from rest_framework.authtoken.models import Token
-
-from account.models import Account
-
-
-class RegisterSerializer2(serializers.ModelSerializer):
-    class Meta:
-        model = Account
-        fields = ['first_name', 'last_name']
-
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['username', 'password1', 'password2']
-
-
-    def validate_username(value):
-        if value != "Dol":
-            raise ValueError("Not Good!")
-        return value
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -48,6 +28,5 @@ class RegisterSerializer(serializers.ModelSerializer):
         usr.set_password(password)
         usr.save()
         Token.objects.create(user=usr)
-        print("HERE!")
         print(User.objects.get(username=usr.username))
         return usr

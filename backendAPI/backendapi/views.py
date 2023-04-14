@@ -1,3 +1,6 @@
+import json
+from time import sleep
+
 from rest_framework.authtoken.admin import User
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
@@ -9,23 +12,20 @@ from account.serializers import CreateAccountSerializer
 class RegisterView(APIView):
 
     def post(self, request):
-        print("*************************")
-        print(request.data)
-        print("*************************")
-        data1 = {'email': request.data['email'], 'username': request.data['username'],
-                 'password': request.data['password'], 'password2': request.data['password2']}
+        alldata = request.data['data']
+        alldata = json.loads(alldata)
+        data1 = {'email': alldata['email'], 'username': alldata['username'],
+                 'password': alldata['password'], 'password2': alldata['password2']}
         serializerU = RegisterSerializer(data=data1)
+        sleep(30)
         if serializerU.is_valid():
             usr = serializerU.save()
-
-
         data2 = {}
         usr = User.objects.get(username=usr.username)
         data2['user'] = usr.id
-        data2['first_name'] = request.data['first_name']
-        data2['last_name'] = request.data['last_name']
+        data2['first_name'] = alldata['first_name']
+        data2['last_name'] = alldata['last_name']
         serializer = CreateAccountSerializer(data=data2)
-
         data = {}
         if serializer.is_valid():
             serializer.save()
@@ -34,6 +34,7 @@ class RegisterView(APIView):
             data['username'] = usr.username
             token = Token.objects.get(user=usr).key
             data['token'] = token
+            print("Created!!!")
         else:
             data = serializerU.errors
 

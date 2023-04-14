@@ -2,12 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinLengthValidator
 
-from django.db.models.signals import post_save
-from django.conf import settings
-from rest_framework.authtoken.models import Token
-
-
-# Create your models here.
 
 class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -18,10 +12,21 @@ class Account(models.Model):
         choices=[('male', 'male'), ('female', 'female')],
         blank=False,
     )
-    level = models.IntegerField(default=1)
-    learn_unit = models.IntegerField(default=1)
-    # is_teacher = models.BooleanField(default=False)
+    userLevel = models.IntegerField(default=1)
+    userUnit = models.IntegerField(default=1)
+    points = models.IntegerField(default=0)
 
+    city = models.CharField(validators=[MinLengthValidator(2)], max_length=50, blank=False)
+
+    # is_teacher = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
+
+
+
+
+# class Teacher(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     students = models.ForeignKey(User)
+#     school = models.CharField(validators=[MinLengthValidator(2)], max_length=50, blank=False)

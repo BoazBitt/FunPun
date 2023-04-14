@@ -1,0 +1,41 @@
+
+
+                    {/* <p>1)  &nbsp;מהי האות השביעית ב-ABC?</p>
+                    <input maxLength="1" type="text" value={answers.q1} onChange={(event) => setAnswers({ ...answers, q1: event.target.value })} /><br/><br/>
+                    <p>2)  &nbsp;רשום את המילים הבאות בסדר ה-ABC<br/><br/>(הפרד בין כל מילה בעזרת פסיק) <br/><br/> desk, computer, pencil, chair</p>
+                    <input type="text" value={answers.q2} onChange={(event) => setAnswers({ ...answers, q2: event.target.value })} /><br/><br/>
+                    <p>3)&nbsp; איך אומרים כלב באנגלית?</p>
+                    <input type="text" value={answers.q3} onChange={(event) => setAnswers({ ...answers, q3: event.target.value })} /><br/><br/>
+                    <p>4)&nbsp; השלם את המשפט הבא באנגלית<br/><br/> "I _____ to school every day."</p>
+                    {arr3.map((option, index) => (
+                        <div key={index}>
+                        <input type="radio" id={option} name="transportation" value={option} onChange={(event) => setAnswers({ ...answers, q4: event.target.value })} />
+                        <label htmlFor={option}>{option}</label><br/><br/></div>))}
+                    <p>5)&nbsp; השלם את המשפט בעזרת Have/Has : <br/>"I  _____ 2 pencils in my pencil case."</p>
+                    <input type="text" value={answers.q5} onChange={(event) => setAnswers({ ...answers, q5: event.target.value })} /><br/><br/>
+                    <p>6)&nbsp; התאם את המילה  {Choice1}   להגדרה הנכונה</p>
+                    <select value={answers.q6} onChange={(event) => setAnswers({ ...answers, q6: event.target.value })}>
+                    <option value="">בחר...</option>
+                    <option value="pencil">כלי כתיבה</option>
+                    <option value="desk">רהיט הניתן לעבוד עליו</option>
+                    <option value="book">דפים כתובים או מודפסים המחוברים יחדיו</option>
+                    </select><br/><br/>
+                    <p>7) &nbsp;</p>
+                    <input type="text" value={answers.q7} onChange={(event) => setAnswers({ ...answers, q7: event.target.value })} />
+                    <p>Which of the following words means &nbsp; (8<br/> <br/>'to make a mistake <br/></p>
+                    {arr4.map((option, index) => (
+                        <div key={index}>
+                        <input type="radio" id={option} name="transportation" value={option} onChange={(event) => setAnswers({ ...answers, q8: event.target.value })} />
+                        <label htmlFor={option}>{option}</label><br/><br/></div>))}
+                    <p>9) &nbsp; השלם את המשפט בעזרת Am/Is/Are:<br/><br/> "I am happy, and my friends ____ happy too."</p>
+                    <input type="text" value={answers.q9} onChange={(event) => setAnswers({ ...answers, q9: event.target.value })} />
+                    <p>10)&nbsp; התאם את המילה  {Choice2}   להגדרה הנכונה</p>
+                    <select value={answers.q10} onChange={(event) => setAnswers({ ...answers, q10: event.target.value })}>
+                    <option value="">בחר...</option>
+                    <option value="apple">פרי עגול הקיים בצבעים אדום,צהוב או ירוק</option>
+                    <option value="chair">רהיט המיועד בעיקר לישיבה הבנוי ממשטח וארבע רגליים</option>
+                    <option value="computer">מכישר חשמלי המסוגל לשמור ולעבד מידע</option>
+                    </select>
+
+                    <p>11)&nbsp; תכתוב פסקה קצרה באנגלית על המקום האהוב עליך</p>
+                    <textarea value={answers.q11} onChange={(event) => setAnswers({ ...answers, q11: event.target.value })}></textarea> */}

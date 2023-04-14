@@ -1,0 +1,37 @@
+Word Matching: A simple game where learners match English words with their definitions or translations.
+
+Word Scramble: A game where the learner unscrambles a jumbled up word to form a correct English word.
+
+Word Jumble: A game where the learner rearranges a group of words to form a correct sentence.
+
+Word Bingo: A classic bingo game where the learner marks off English words they know as they're called out.
+
+Word Snake: A game where the learner creates a snake of words, connecting one word to the next by finding a word that starts with the last letter of the previous word.
+
+Word Ladder: A game where the learner changes one word into another word by making a sequence of words, each of which differs from the previous word by one letter.
+
+Word Cross: A word puzzle game where the learner fills in the crossword puzzle with English words.
+
+Word Guessing: A game where the learner has to guess a word based on a definition or a sentence that uses the word.
+
+Word Duel: A two-player game where players take turns trying to guess the missing word in a sentence.
+
+Word Picture Match: A game where the learner matches English words with corresponding images.
+
+Word Pronunciation: A game where the learner listens to a word and then selects the correct spelling from a multiple choice list.
+
+Word Charades: A classic party game where the learner acts out a word without speaking, and others try to guess the word.
+
+Word Sort: A game where the learner sorts English words into categories, such as nouns, verbs, adjectives, etc.
+
+Word Trivia: A game where the learner answers trivia questions related to English words and their meanings.
+
+Word Builder: A game where the learner builds as many words as they can from a set of letters.
+
+Word Connect: A game where the learner connects English words with lines to form a word web.
+
+Word Roulette: A game where the learner takes turns spinning a virtual wheel to determine the word they must use in a sentence or definition.
+
+Word Chain: A game where the learner adds a word to a chain of words, such that each word begins with the last letter of the previous word.
+
+Word Speed: A game where the learner races against the clock to find as many English words as they can from a set of letters.
