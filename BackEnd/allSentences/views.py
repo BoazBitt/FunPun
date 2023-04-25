@@ -19,14 +19,13 @@ class SentenceViewSet(viewsets.ModelViewSet):
                                             word=data['word'],
                                             translation=data['tranlation'],
                                             Hword=data['Hword'],
-                                            level=data['level'],
-                                            unit=data['unit'])
+                                            level=data['level'])
         serializer = self.get_serializer(sentence)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def retrieve(self, request, *args, **kwargs):
         user = User.objects.get(id=kwargs['pk'])
         acc = Account.objects.get(user=user)
-        sentences = Sentences.objects.filter(level=acc.userLevel, unit=acc.userUnit)
+        sentences = Sentences.objects.filter(level=acc.userLevel)
         sentenceS = self.get_serializer(sentences,many=True)
         return Response(sentenceS.data)

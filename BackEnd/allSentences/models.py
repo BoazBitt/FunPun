@@ -8,7 +8,6 @@ class Sentences(models.Model):
     translation = models.CharField(validators=[MinLengthValidator(2)], max_length=50)
     Hword = models.CharField(validators=[MinLengthValidator(2)], max_length=50)
     level = models.IntegerField()
-    unit = models.IntegerField()
 
     def __str__(self):
         return self.translation

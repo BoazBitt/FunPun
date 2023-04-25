@@ -13,7 +13,6 @@ class Account(models.Model):
         blank=False,
     )
     userLevel = models.IntegerField(default=1)
-    userUnit = models.IntegerField(default=1)
     points = models.IntegerField(default=0)
 
     city = models.CharField(validators=[MinLengthValidator(2)], max_length=50, blank=False)

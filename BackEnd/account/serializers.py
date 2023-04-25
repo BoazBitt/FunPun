@@ -6,7 +6,7 @@ from rest_framework.authtoken.models import Token
 class CreateAccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ['user', 'first_name', 'last_name', 'gender', 'city', 'userLevel', 'userUnit']
+        fields = ['user', 'first_name', 'last_name', 'gender', 'city', 'userLevel']
 
 
 class AccountSerializer(serializers.ModelSerializer):
@@ -14,7 +14,7 @@ class AccountSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Account
-        fields = ['user', 'first_name', 'last_name', 'gender', 'city', 'userLevel', 'userUnit', 'is_superuser','points']
+        fields = ['user', 'first_name', 'last_name', 'gender', 'city', 'userLevel', 'is_superuser','points']
 
     def get_is_superuser(self, obj):
         return obj.user.is_superuser
