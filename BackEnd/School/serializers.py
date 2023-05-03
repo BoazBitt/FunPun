@@ -47,7 +47,7 @@ class TeacherSerializer(serializers.ModelSerializer):
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
-        fields = ['fullName', 'studentLevel', 'classroom', 'done']
+        fields = ['fullName', 'classroom', 'done']
 
 
 class ClassRoomSerializer(serializers.ModelSerializer):
@@ -55,4 +55,11 @@ class ClassRoomSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Classroom
-        fields = ['classID', 'teacher', 'capacity', 'students']
+        fields = ['classID', 'teacher', 'capacity', 'students', 'classLevel']
+
+
+class CreateClassroomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Classroom
+        fields = ['classID', 'teacher', 'capacity', 'classLevel']
+

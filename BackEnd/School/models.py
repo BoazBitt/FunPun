@@ -23,6 +23,7 @@ class Classroom(models.Model):
     classID = models.CharField(primary_key=True, validators=[MinLengthValidator(2)], max_length=50, blank=False)
     teacher = models.ForeignKey(Teacher, related_name='classrooms', on_delete=models.DO_NOTHING)
     capacity = models.IntegerField(default=0)
+    classLevel = models.IntegerField(default=1)
 
     def __str__(self):
         return self.classID + " " + self.teacher.first_name + " With amount: " + str(self.capacity)
@@ -31,7 +32,6 @@ class Classroom(models.Model):
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     fullName = models.CharField(validators=[MinLengthValidator(2)], max_length=50, blank=False)
-    studentLevel = models.IntegerField(default=0)
     classroom = models.ForeignKey(Classroom, related_name='students', on_delete=models.CASCADE)
     done = models.BooleanField(default=False)
     hashkey = models.CharField(validators=[MinLengthValidator(2)], max_length=5, blank=False)

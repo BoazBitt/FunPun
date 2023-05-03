@@ -1,12 +1,11 @@
 from django.http import HttpResponseBadRequest
 from django.shortcuts import render
 import json
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, permissions
 from .models import Teacher, Student, Classroom
 from rest_framework.authtoken.admin import User
-from account.models import Account
 from rest_framework.response import Response
-from .serializers import TeacherSerializer, ClassRoomSerializer
+from .serializers import TeacherSerializer, ClassRoomSerializer, CreateClassroomSerializer
 from .serializers import UserSerializer
 from django.contrib.auth import login
 
@@ -54,35 +53,29 @@ class ClassroomViewSet(viewsets.ModelViewSet):
     serializer_class = ClassRoomSerializer
 
     def create(self, request, *args, **kwargs):
-        print("class1")
-        print(request.data)
-        pass
+        data = json.loads(request.data.get('classData'))
+        data['capacity'] = int(data['capacity'])
+        user = User.objects.get(id=data['teacher'])
+        teacher = Teacher.objects.get(user=user)
+        data['teacher'] = teacher.pk
+        serializer = CreateClassroomSerializer(data=data)
+        if not serializer.is_valid():
+            return HttpResponseBadRequest("Bad Request")
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def retrieve(self, request, *args, **kwargs):
-        print("1")
         user = User.objects.get(id=kwargs['pk'])
-        print("1")
         teacher = Teacher.objects.get(user=user)
-        print("1")
         classes = Classroom.objects.filter(teacher=teacher)
-        print("1")
         sentenceC = self.get_serializer(classes, many=True)
         return Response(sentenceC.data)
 
-
-
-
-
-class StudentViewSet(viewsets.ModelViewSet):
-    queryset = Student.objects.all()
-    print(queryset)
-
-    # serializer_class =
-
-    def create(self, request, *args, **kwargs):
-        print("student1")
-        pass
-
-    def retrieve(self, request, *args, **kwargs):
-        print("student2")
-        pass
+    def perform_destroy(self, instance):
+        print("in delete")
+        print(instance)
+        students = Student.objects.filter(classroom=instance)
+        for student in students:
+            student.delete()
+        instance.delete()
+        return Response('Class was deleted successfully', status=status.HTTP_200_OK)
