@@ -72,8 +72,6 @@ class ClassroomViewSet(viewsets.ModelViewSet):
         return Response(sentenceC.data)
 
     def perform_destroy(self, instance):
-        print("in delete")
-        print(instance)
         students = Student.objects.filter(classroom=instance)
         for student in students:
             student.delete()
