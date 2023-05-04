@@ -1,0 +1,7 @@
+  {
+    sentence: "",
+    word: "",
+    tranlation: "",
+    Hword: "",
+    level:0,
+  },

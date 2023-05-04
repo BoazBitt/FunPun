@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+.Teacher {
+    margin-top: 72px;
+    height: calc(100vh - 144px);
+
+    .head {
+        text-align: center;
+        font-family: 'Rubik', sans-serif;
+        font-size: 2rem;
+    }
+
+    .here {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .classroomContianer {
+
+        .classroom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: calc(100% - 15px);
+            gap: 20px;
+            margin-top: 20px;
+            box-shadow: rgba(255, 255, 255, 0.16) 0px 3px 6px, rgba(255, 255, 255, 0.23) 0px 3px 6px;
+            border: 3px solid rgb(9, 255, 0);
+            background-color: white;
+
+            * {
+                color: black;
+            }
+
+            .classroom_icon{
+                width: calc(100% - 98%);
+                padding: 5px 0px;
+            }
+            
+
+            .classroom_id {
+                font-size: x-large;
+                width: calc(100% - 50%);
+                text-align: center;
+                
+                
+            }
+            
+            .classroom_capity {
+                font-size: x-large;
+                width: calc(100% - 90%);
+                text-align: center;
+                
+                
+            }
+            
+            .classroom_level {
+                font-size: x-large;
+                width: calc(100% - 90%);
+                text-align: center;
+
+            }
+
+            .classroom_link {
+                width: calc(100% - 80%);
+                background-color: green;
+                border-radius: 12px;
+                font-size: x-large;
+                text-align: center;
+
+            }
+
+        }
+
+        .studentInfo {
+            right: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+       
+          
+          
+        }
+    }
+
+    .classInfo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        padding: 30px;
+        input{
+            border: transparent;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid black;
+            padding: 5px;
+        }
+        select{
+            width: 10%;
+            height: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding-left: 5px;
+            font-family: 'Open Sans', sans-serif;
+            color: #555;
+            background-color: rgb(255, 255, 255);
+            background-image: none;
+            border: 1px solid rgb(41, 18, 18);
+        }
+        select>option{
+            font-size: 18px;
+            font-family: 'Open Sans', sans-serif;
+            color: #555;
+            background-color: rgb(247, 247, 247);
+            background-image: none;
+            font-size: 18px;
+            height: 50px;
+            padding: 15px;
+            border: 1px solid rgb(41, 18, 18);
+        }
+
+    }
+
+    .btns {
+        display: flex;
+        justify-content: center;
+        gap: 94px;
+        padding: 20px;
+
+        span {
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 5px;
+            background: greenyellow;
+            color: black;
+            padding: 5px;
+            width: 180px;
+            border-radius: 5px;
+            transition: 0.5s;
+            text-transform: capitalize;
+            box-shadow: rgba(255, 255, 255, 0.16) 0px 3px 6px, rgba(255, 255, 255, 0.23) 0px 3px 6px;
+        }
+
+        span:hover {
+            width: 180px;
+            background: green;
+        }
+
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .Teacher {
+  
+        .classroomContianer {
+            .classroom {
+                .classroom_link {
+                    font-size: 12px;
+
+    
+                }
+    
+            }
+
+        }
+    
+        .btns {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .Teacher {
+  
+        .classroomContianer {
+            .classroom {
+                .classroom_link {
+                    font-size: 12px;
+
+    
+                }
+    
+            }
+
+        }
+    
+        .btns {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+        }
+    }
+}
