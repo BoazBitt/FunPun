@@ -1,0 +1,13 @@
+.container{
+    border: 2px solid red;
+    width: 100%;
+    height: calc(100vh - 72px);
+    padding-top: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    *{
+        color: black;
+    }
+}
