@@ -21,12 +21,10 @@ const Home = () => {
 
 
 
-  console.count("home")
 
 
   return (
     <>
-
       <Container className={classes.homeContainer} color={"#29215A"}>
         <Animated
           animationIn="fadeInLeft"

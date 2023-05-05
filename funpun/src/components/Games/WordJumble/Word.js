@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classes from './Word.module.scss';
+import Confetti from 'react-confetti'
+
 
 const Word = (props) => {
 
@@ -13,7 +15,7 @@ const Word = (props) => {
   const [endTime, setEndTime] = useState(0);
   const [res, setRes] = useState({ proceed: false, type: 'def' });
   const [color,setColor] = useState('white');
-
+  const [guess, setGuess] = useState(0);
 
   const handleChange = (event) => {
     if (!res.proceed) {
@@ -21,11 +23,15 @@ const Word = (props) => {
       setValue(newValue);
     }
   };
+
+
   useEffect(()=>{
     if (value.length===w1.length && res.type==='Correct'){
       setColor('green')
+      setGuess(0);
     }
     else if (value.length===w1.length && res.type==='Wrong'){
+      setGuess((prev)=> prev + 1);
       setColor('red')
     }
     else{
@@ -35,6 +41,7 @@ const Word = (props) => {
 
   const click = () => {
     setValue('');
+    setGuess(0);
     setEndTime(Date.now());
     setRes({ proceed: true, type: 'Correct' });
     props.setTime(elapsedTime)
@@ -70,38 +77,44 @@ const Word = (props) => {
   useEffect(() => { const jumbledWord = jumbleWord(w1); setClue(jumbledWord) }, [w1])
   return (
     <div className={classes.container}>
-      <div className={classes.instruct}>
-        {' '}
-        :רשום באנגלית את המילה {w2}
-      </div>
-      <div className={classes.jword}>{clue} :רמז</div>
-      <div className={classes.word}>
-        {chars.map((char, index) => (
-          <div key={index} className={classes.mybox}>
-            {value[index] ? value[index] : ''}
+      <h1 id={classes.title}>משחק Jumble</h1>
+      <div className={classes.__content}>
+        <div className={classes.instruct}>
+          <h1>רשום באנגלית את המילה {' '}<span>{w2}</span>:</h1>
+        </div>
+        <div className={classes.word}>
+          {chars.map((char, index) => (
+            <div key={index} className={classes.mybox}>
+              {value[index] ? value[index] : ''}
+            </div>
+          ))}
+        </div>
+        {guess > 1 && 
+          <div className={classes.jword}>
+            <span>רמז: {clue}</span>
           </div>
-        ))}
-      </div>
-      <div className={classes.in}>
-        <input
-          required
-          maxLength={chars.length}
-          type="text"
-          id="myInput"
-          value={value}
-          onChange={handleChange}
-          disabled={res.proceed}
-          style={{backgroundColor:color}}
-          />
+        }
+        <div className={classes.in}>
+          <label>הכנס את המילה</label>
+          <input
+            required
+            maxLength={chars.length}
+            type="text"
+            id="myInput"
+            value={value}
+            onChange={handleChange}
+            disabled={res.proceed}
+            style={{backgroundColor:color}}
+            />
+        </div>
+        <div className={classes.btn}>
+          {res.proceed && <Confetti/>}
+          {res.proceed &&  <button onClick={click}>Proceed</button>}
+          {res.proceed && <span>הזמן שלקח לך {elapsedTime.toFixed(2)} שניות</span>}
+        </div>
+     
       </div>
 
-      <div className={classes.btn}>
-        {res.proceed && <button onClick={click}>Proceed</button>}
-      </div>
-
-      <div className={classes.time}>
-        {res.proceed && `Time taken: ${elapsedTime.toFixed(2)} seconds`}
-      </div>
     </div>
   );
 };

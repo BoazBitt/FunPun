@@ -1,130 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500&family=Rubik+Vinyl&display=swap");
 .container {
-    height: calc(100vh - 144px);
-
-
+  font-family: "Fredoka", sans-serif;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  direction: rtl;
+  #title {
+    font-size: 100px;
+    font-family: "Rubik Vinyl", cursive;
+    text-transform: capitalize;
+    margin: 0;
+  }
+  .__content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     .instruct {
-        margin-top: 30px;
-        padding: 30px;
+      h1 {
+        font-size: 60px;
+        margin: 0;
+        span {
+          color: yellow;
+        }
+      }
+    }
+    .jword {
+      margin-bottom: 20px;
+      text-align: center;
+      span {
+        font-weight: 100;
+        font-size: 30px;
+      }
     }
 
     .word {
-        padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      height: 100px;
+      direction: ltr;
+      .mybox {
+        width: 50px;
+        height: 50px;
         display: flex;
+        align-items: center;
         justify-content: center;
-        gap: 40px;
-
-        .mybox {
-            width: 40px;
-            height: 40px;
-            background: #b1b1b1;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        }
+        font-size: 30px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border-radius: 3px;
+        background: #6b3fa9;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
     }
 
     .in {
-        padding: 30px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      label{
+        opacity: 0.5;
+      }
+      input {
+        color: black;
+        text-align: center;
+        font-size: 40px;
+        padding-left: 10px;
+        border: none;
+        height: 52px;
+        background: #ffffff;
+        border-radius: 12px;
+      }
 
-        * {
-            color: black;
-        }
-
-        input {
-            color: black;
-            text-align: center;
-            font-size: 40px;
-            padding-left: 10px;
-            border: none;
-            width: 304px;
-            height: 52px;
-            background: #ffffff;
-            border-radius: 12px;
-        }
-
-        input:focus {
-            outline: none;
-        }
+      input:focus {
+        outline: none;
+      }
     }
 
     .btn {
-        padding: 30px;
-        button{
-            background: greenyellow;
-            width: 150px;
-            height: 50px;
-            border-radius: 12px;
-            border: none;
-            font-size: large;
-            transition: 0.5s;
-
-        }
-        button:hover{
-            background: green;
-            width: 170px;
-            height: 60px;
-            font-size: x-large;
-        }
-
-
-        * {
-            color: black;
-        }
+      height: 150px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      button {
+        color: black;
+        background: greenyellow;
+        width: 150px;
+        height: 50px;
+        border-radius: 12px;
+        border: none;
+        font-size: large;
+        transition: 0.5s;
+      }
+      button:hover {
+        background: green;
+        width: 170px;
+        height: 60px;
+        font-size: x-large;
+      }
+      span{
+        font-weight: 400;  
     }
 
+    }
+  }
 }
 
 @media only screen and (max-width: 600px) {
-    .container {
-        padding-top: 50px;
+  .container {
+    padding-top: 50px;
 
-        .in {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-
-        }
+    .in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
     }
+  }
 }
 
 @media only screen and (max-width: 400px) {
+  .container {
+    .in {
+      padding: 30px;
 
+      * {
+        color: black;
+      }
 
-    .container {
+      input {
+        color: black;
+        text-align: center;
+        font-size: 40px;
+        padding-left: 10px;
+        border: none;
+        width: 204px;
+        height: 52px;
+        background: #ffffff;
+        border-radius: 12px;
+      }
 
-
-
-        .in {
-            padding: 30px;
-
-            * {
-                color: black;
-            }
-
-            input {
-                color: black;
-                text-align: center;
-                font-size: 40px;
-                padding-left: 10px;
-                border: none;
-                width: 204px;
-                height: 52px;
-                background: #ffffff;
-                border-radius: 12px;
-            }
-
-            input:focus {
-                outline: none;
-            }
-        }
-
-        .btn {
-            padding: 30px;
-
-
-            * {
-                color: black;
-            }
-        }
-
+      input:focus {
+        outline: none;
+      }
     }
+
+    .btn {
+      padding: 30px;
+
+      * {
+        color: black;
+      }
+    }
+  }
 }

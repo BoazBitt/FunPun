@@ -4,39 +4,49 @@ import classes from './LearnSentence.module.scss';
 
 const Game = props => {
   const { sentence, word, translation, Hword } = props.game
-  console.log(props.game)
-  console.log(sentence)
-  console.log(word)
-  console.log(translation)
-  console.log(Hword)
+
   const [clicked, setClicked] = useState(false);
   const [getNext, setGetNext] = useState(false);
   return (
     <div className={classes.game}>
-      <div className={classes.sentence}>
-        {sentence.split(" ").map((w) => {
+      <div className={classes.sentence_results}>
+        <div className={classes.sentence}>
+          {sentence.split(" ").map((w) => {
 
           if (w === Hword || w === translation) {
-            return <span className={clicked ? classes.word : ''}>{w + " "}</span>
+            return (
+            <span className={clicked ? classes.word : ' '}>  {w + "  "}
+            </span>
+            )
           }
-          return <span className={classes.other}>{" " + w}</span>
-        })}
+          return(
+          <span> 
+          {" " + w}
+          </span>
+          )
+          })}
+        </div>
+        {getNext &&  <label className={classes.results}>{word}</label>}
       </div>
+
       <div className={classes.btns}>
-        {!getNext && <span className={classes.btn} onClick={() => {
-          setClicked(true);
-          setGetNext(true);
-        }}>גלה את המילה</span>}
+        {!getNext && 
+          <button className={classes.btn} onClick={() => {
+            setClicked(true);
+            setGetNext(true);
+          }}>
+            גלה את המילה
+          </button>
+        }
         {getNext &&
-          <div className={classes.rev}>
-            {word}
-            <br />
-            <span className={classes.btn} onClick={() => {
-              props.clickHandler();
-              setClicked(false);
-              setGetNext(false);
-            }}>הבא</span>
-          </div>
+            <button 
+              onClick={() => {
+                props.clickHandler();
+                setClicked(false);
+                setGetNext(false);
+            }}>
+              הבא
+            </button>
         }
 
       </div>
