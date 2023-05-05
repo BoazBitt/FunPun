@@ -1,9 +1,6 @@
 $primary-color: #080710;
 $secondary-color: #ffffff;
 .exit{
-    // *{
-    //     color: white;
-    // }
     position: absolute;
     top: 0;
     right: 0;
@@ -15,17 +12,18 @@ $secondary-color: #ffffff;
     color: white;
     font-size: 1.5rem;
     font-weight: 600;
-    transition: 0.7s;
+    transition: 0.2s;
     border: none;
     background-color: transparent;
     border-radius: 12px;
     
 }
 .exit:hover{
-    color: red;
+    color: rgb(151, 151, 151);
 }
 
 .content {
+    padding: 20px;
     color: black;
     background-color: #1D3559   ;
     display: flex;
