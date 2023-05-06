@@ -77,7 +77,7 @@ const Word = (props) => {
   useEffect(() => { const jumbledWord = jumbleWord(w1); setClue(jumbledWord) }, [w1])
   return (
     <div className={classes.container}>
-      <h1 id={classes.title}>משחק Jumble</h1>
+      <h1 id={classes.title}>Word Jumble</h1>
       <div className={classes.__content}>
         <div className={classes.instruct}>
           <h1>רשום באנגלית את המילה {' '}<span>{w2}</span>:</h1>
@@ -89,7 +89,7 @@ const Word = (props) => {
             </div>
           ))}
         </div>
-        {guess > 1 && 
+        {guess > 2 && 
           <div className={classes.jword}>
             <span>רמז: {clue}</span>
           </div>
@@ -109,7 +109,7 @@ const Word = (props) => {
         </div>
         <div className={classes.btn}>
           {res.proceed && <Confetti/>}
-          {res.proceed &&  <button onClick={click}>Proceed</button>}
+          {res.proceed &&  <button onClick={click}>המשך</button>}
           {res.proceed && <span>הזמן שלקח לך {elapsedTime.toFixed(2)} שניות</span>}
         </div>
      

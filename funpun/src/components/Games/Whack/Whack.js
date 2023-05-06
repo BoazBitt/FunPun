@@ -12,7 +12,7 @@ const Whack = () => {
   const initialState = state ? state.sentences : DUMMY;
   const [next, setNext] = useState(0);
   const [score, setScore] = useState(0);
-  const [start, setStart] = useState(true);
+  const [start, setStart] = useState(false);
 
   const [divs, setDivs] = useState([
     { id: 1, content: "" },
@@ -75,12 +75,15 @@ const Whack = () => {
 
   return (
     <Container color={"#29215A"}>
+      
+
       {start && (
         <div className={classes.whack}>
+          <h1 id={classes.title}>Whack The Mole</h1>
           <div className={classes.data}>
             <div className={classes.score}>התוצאה שלך: {score}</div>
             <div className={classes.instructions}>
-              מה התרגום של המילה "{initialState[next + 1].content}" באנגלית{" "}
+            <h1>מה התרגום של המילה {' '}<span>{initialState[next + 1].content}</span> באנגלית</h1>
             </div>
           </div>
 

@@ -10,7 +10,7 @@ import DUMMY_SENTENCES from "../../Data/DUMMY_SENTENCES";
 // import board4 from "../assets/images/board4.png";
 // import back from '../assets/images/back.jpg'
 
-const allgames = ["Jumble"];
+const allgames = ["Whack"];
 const NUMOFGAMES = allgames.length;
 
 //'CardGame','Jumble','Whack'
