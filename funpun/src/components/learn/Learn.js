@@ -10,21 +10,18 @@ import DUMMY_SENTENCES from "../../Data/DUMMY_SENTENCES";
 // import board4 from "../assets/images/board4.png";
 // import back from '../assets/images/back.jpg'
 
-const allgames = ["CardGame"];
+const allgames = ["Jumble"];
 const NUMOFGAMES = allgames.length;
 
 //'CardGame','Jumble','Whack'
 
 const Learn = () => {
   const navigation = useNavigate();
-
   const isLogin = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
   const sentences = useSelector((state) => state.auth.sentences);
-
   const userLevel = isLogin ? user.userLevel : 1;
   const LearnedSentences = isLogin ? sentences : DUMMY_SENTENCES;
-  // const LearnedSentences = isLogin?S1:DUMMY_SENTENCES;
 
   const [start, setStart] = useState(false);
   const [next, setNext] = useState(0);

@@ -22,7 +22,7 @@ const Teacher = () => {
   const [loader, setLoader] = useState(true)
   const [visable, setVisable] = useState(false)
   const [data, setData] = useState({ classID: '', capacity: 0, classLevel: 0 })
-  const user = useSelector(state => state.auth.user)
+  const user = useSelector(state=>state.auth.user)
   const onchangeHnadler = (e, type) => {
     setData({ ...data, [type]: e.target.value })
   }
@@ -37,7 +37,9 @@ const Teacher = () => {
   }
 
   useEffect(() => {
+  
     getClasses(user.user).then((classrooms) => {
+      console.log(data)
       dispatch(authActions.setClassrooms(classrooms))
     })
     setTimeout(() => {

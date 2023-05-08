@@ -16,39 +16,22 @@ const authSlice = createSlice(
         reducers: {
             login(state, action) {
                 state.isAuthenticated = true;
+                state.Token = action.payload.token;
+                state.user = action.payload.user;
                 if (action.payload.user.points) {
-                    console.log("in if")
-                    state.Token = action.payload.token;
-                    state.user = action.payload.user;
-                    state.points = action.payload.user.points;
+                    state.points = action.payload.user.points;             
                 }
-                else {
-                    console.log("in else")
-                    state.user = action.payload.user;
-                    state.Token = action.payload.token;
-                }
-
             },
             logout(state) {
-                state.isAuthenticated = false;
-                state.Token = "";
-                state.user = "";
-                state.userLevel = null;
-                state.sentences = null;
-                state.points = 0;
-                state.classrooms = [];
 
-
+                return initialState;
             },
+
             setSentences(state, action) {
                 state.sentences = action.payload;
             },
             setClassrooms(state, action) {
-                console.log(action.payload)
                 state.classrooms = action.payload;
-
-
-
             }
 
         }

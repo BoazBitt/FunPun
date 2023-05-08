@@ -14,14 +14,13 @@ import { useDispatch } from "react-redux";
 const Home = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state.auth.isAuthenticated)
-  const userFullName = useSelector(state => state.auth.user.first_name + " " + state.auth.user.last_name)
-  const UserLevel = useSelector(state => state.auth.user.userLevel)
-  const superuser = useSelector(state => state.auth.user.is_superuser)
-  const school = useSelector(state=>state.auth.user.school_name)
+  const user = useSelector(state => state.auth.user)
+  const userFullName = user? user.first_name + " " + user.last_name:null
+  const userLevel = user? user.userLevel:null
+  const superuser = user? user.is_superuser:false
+  const school = user? user.school_name:null
 
-
-
-
+  
 
   return (
     <>
@@ -46,24 +45,21 @@ const Home = () => {
               <span onClick={() => { dispatch(modalActions.openModal({ modalType: 'SignUp', modalArgs: null })) }}>הירשם</span>
               <span onClick={() => { dispatch(modalActions.openModal({ modalType: 'Login', modalArgs: null })) }}>התחבר</span>
               <AnchorLink className={classes.anch} href="#PageContent" style={{ textDecoration: 'none' }}>?איך זה עובד</AnchorLink>
-  
+
 
               <span onClick={() => { dispatch(modalActions.openModal({ modalType: 'School', modalArgs: null })) }}>כניסת מורים</span>
             </div></>}
+    
           {isLogin && superuser ? <>
             <h1>Hello Admin</h1>
             <Link to={'/Admin'} className={classes.continue} style={{ textDecoration: 'none' }}>Admin Page</Link>
-
-
           </> :
-            <>
+            <> 
               {isLogin && <h1>{userFullName} שלום </h1>}
-              {isLogin &&UserLevel&& <h1> רמתך הנוכחית היא {UserLevel}</h1>}
-              {isLogin &&UserLevel&& <Link to={'/Learn'} className={classes.continue} style={{ textDecoration: 'none' }}>המשך ללמוד</Link>}
-              {isLogin&&school&&<Link to={'/Teacher'} className={classes.continue} style={{ textDecoration: 'none' }}>דף מורה</Link>}
+              {isLogin && userLevel && <h1> רמתך הנוכחית היא {userLevel}</h1>}
+              {isLogin && userLevel && <Link to={'/Learn'} className={classes.continue} style={{ textDecoration: 'none' }}>המשך ללמוד</Link>}
+              {isLogin && school && <Link to={'/Teacher'} className={classes.continue} style={{ textDecoration: 'none' }}>דף מורה</Link>}
             </>}
-          
-
 
         </Animated>
       </Container>
