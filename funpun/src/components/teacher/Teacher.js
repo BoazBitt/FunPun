@@ -28,7 +28,7 @@ const Teacher = () => {
   }
   const links = []
   const genertaeLink = (classID,classLevel) => {
-    const link = `https://Funpun.com/Learn/id=${classID}Level=${classLevel}`
+    const link = `http://localhost:3000/Student?classroom=${classID}&classLevel=${classLevel}`
     return link
   }
   for (let i = 0; i < classrooms.length; i++) {
