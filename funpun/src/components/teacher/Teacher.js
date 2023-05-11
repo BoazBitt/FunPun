@@ -22,13 +22,13 @@ const Teacher = () => {
   const [loader, setLoader] = useState(true)
   const [visable, setVisable] = useState(false)
   const [data, setData] = useState({ classID: '', capacity: 0, classLevel: 0 })
-  const user = useSelector(state => state.auth.user)
+  const user = useSelector(state=>state.auth.user)
   const onchangeHnadler = (e, type) => {
     setData({ ...data, [type]: e.target.value })
   }
   const links = []
   const genertaeLink = (classID,classLevel) => {
-    const link = `https://Funpun.com/Learn/id=${classID}Level=${classLevel}`
+    const link = `http://localhost:3000/Student?classroom=${classID}&classLevel=${classLevel}`
     return link
   }
   for (let i = 0; i < classrooms.length; i++) {
@@ -37,7 +37,9 @@ const Teacher = () => {
   }
 
   useEffect(() => {
+  
     getClasses(user.user).then((classrooms) => {
+      console.log(data)
       dispatch(authActions.setClassrooms(classrooms))
     })
     setTimeout(() => {

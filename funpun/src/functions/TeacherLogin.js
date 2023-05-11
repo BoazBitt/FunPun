@@ -19,6 +19,7 @@ const TeacherLogin = async (loginData) => {
         {
             headers: {
                 'Content-Type': 'application/json'
+            
             },
         },);
         const user = response.data

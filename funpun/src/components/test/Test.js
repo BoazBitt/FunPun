@@ -235,6 +235,7 @@ const Test = () => {
                 <div className={classes.instruction}>
                     <p>על מנת להשלים את ההרשמה </p>
                     <p>אנא ענו על השאלון על מנת שנוכל לקבוע את הרמה שלכם</p>
+                    <h4>אם יש שאלה שאתם לא יודעים השאירו את השדה ריק</h4>
                 </div>
                 <div className={classes.questions}>
                     <form color={'black'}>

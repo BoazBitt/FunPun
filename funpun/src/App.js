@@ -19,7 +19,8 @@ import Test from "./components/test/Test";
 import Speech2Text from "./components/speach/Speech2Text";
 import Admin from "./components/Admin/Admin";
 import Teacher from "./components/teacher/Teacher";
-import Container from "./components/container/Container";
+import StudentLearn from "./components/students/StudentLearn";
+// import Container from "./components/container/Container";
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
@@ -60,7 +61,8 @@ const App = () => {
               <Route path="/CardGame" element={<Board />} />
               <Route path="/Admin" element={<Admin />} />
               <Route path="/Teacher" element={<Teacher />} />
-              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="/Student" element={<StudentLearn />} />
+              {/* <Route path="*" element={<Navigate to="/" />} /> */}
           </Routes>
           <Footer />
         </Router>

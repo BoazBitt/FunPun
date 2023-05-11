@@ -4,32 +4,45 @@
   align-items: center;
   margin-top: 70px;
   .instruction{
-    border: 2px solid red;
     p{
       font-size: xx-large;
     }
   }
   
   .questions {
-    border: 2px solid red;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    
     input {
+      margin-right: 20px;
+      
       color: black;
+      height: 30px;
+      border-radius: 5px;
     }
 
     select {
+      margin-right: 20px;
+      
       color: black;
+      height: 30px;
+      border-radius: 5px;
     }
 
     option {
+      margin-right: 20px;
+      
       color: black;
+      height: 30px;
+      border-radius: 5px;
     }
 
     textarea {
+      margin-right: 20px;
+      
+      border-radius: 5px;
       color: black;
       width: 500px;
       height: 150px;

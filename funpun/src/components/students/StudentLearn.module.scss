@@ -1,0 +1,59 @@
+.Student {
+    height: calc(100vh - 72px);
+    margin-top: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .enterInfo {
+        box-shadow: rgba(154, 154, 154, 0.12) 0px 2px 4px 0px, rgba(164, 165, 165, 0.32) 0px 2px 16px 0px;
+        height: 15vw;
+        width: 20vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        label {
+            padding: 10px;
+
+        }
+
+        input {
+            color: black;
+            width: 80%;
+            height: 30px;
+            border-radius: 7px;
+            padding-right: 10px;
+
+        }
+
+        .btns{
+            span {
+                // display: block;
+                cursor: pointer;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1.3rem;
+                text-align: center;
+                margin-top: 10px;
+                margin-bottom: 5px;
+                background: greenyellow;
+                color: black;
+                padding: 5px;
+                width: 200px;
+                border-radius: 10px;
+                transition: 0.5s;
+                text-transform: capitalize;
+            }
+    
+            span:hover {
+
+                background: green;
+            }
+        }
+
+     
+
+    }
+
+}

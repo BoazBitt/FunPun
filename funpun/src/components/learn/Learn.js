@@ -2,7 +2,7 @@ import { useState } from "react";
 import classes from "./Learn.module.scss";
 import LearnSentence from "./LearnSentence";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { changeSentence } from "../../functions/changeSentce";
 import DUMMY_SENTENCES from "../../Data/DUMMY_SENTENCES";
 // import S1 from '../../Data/sentences'
@@ -10,21 +10,19 @@ import DUMMY_SENTENCES from "../../Data/DUMMY_SENTENCES";
 // import board4 from "../assets/images/board4.png";
 // import back from '../assets/images/back.jpg'
 
-const allgames = ["Jumble"];
+const allgames = ["Whack"];
 const NUMOFGAMES = allgames.length;
 
 //'CardGame','Jumble','Whack'
 
 const Learn = () => {
   const navigation = useNavigate();
-
+  const { state } = useLocation()
   const isLogin = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
   const sentences = useSelector((state) => state.auth.sentences);
-
-  const userLevel = isLogin ? user.userLevel : 1;
-  const LearnedSentences = isLogin ? sentences : DUMMY_SENTENCES;
-  // const LearnedSentences = isLogin?S1:DUMMY_SENTENCES;
+  const userLevel = isLogin ? user.userLevel : state? state.classLevel:1;
+  const LearnedSentences = sentences.length>0 ? sentences : DUMMY_SENTENCES;
 
   const [start, setStart] = useState(false);
   const [next, setNext] = useState(0);
