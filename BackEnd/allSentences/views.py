@@ -23,6 +23,12 @@ class SentenceViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(sentence)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+    def list(self, request, *args, **kwargs):
+        level = request.query_params.get('level')
+        sentences = Sentences.objects.filter(level=level)
+        sentenceS = self.get_serializer(sentences, many=True)
+        return Response(sentenceS.data)
+
     def retrieve(self, request, *args, **kwargs):
         user = User.objects.get(id=kwargs['pk'])
         acc = Account.objects.get(user=user)

@@ -1,11 +1,12 @@
 import axios from "axios";
+import { path } from './path'
 
 
 const getSentences = async (signupData) => {
     console.log("in func!",signupData)
 
     try {
-        const { data } = await axios.post(`http://127.0.0.1:8000/school/Teacher/`,
+        const { data } = await axios.post(`${path}/school/Teacher/`,
             {
                 headers: {
                     'Content-Type': 'application/json'

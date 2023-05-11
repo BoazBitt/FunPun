@@ -1,11 +1,12 @@
 import axios from "axios";
+import { path } from './path'
 
 
 const createClassroom = async (ClassroomData) => {
     console.log("in func!",ClassroomData)
 
     try {
-        const { data } = await axios.post(`http://127.0.0.1:8000/school/Classroom/`,
+        const { data } = await axios.post(`${path}/school/Classroom/`,
             {
                 headers: {
                     'Content-Type': 'application/json'

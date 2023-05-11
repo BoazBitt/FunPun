@@ -30,11 +30,10 @@ class Classroom(models.Model):
 
 
 class Student(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
     fullName = models.CharField(validators=[MinLengthValidator(2)], max_length=50, blank=False)
     classroom = models.ForeignKey(Classroom, related_name='students', on_delete=models.CASCADE)
     done = models.BooleanField(default=False)
-    hashkey = models.CharField(validators=[MinLengthValidator(2)], max_length=5, blank=False)
+    hashkey = models.CharField(validators=[MinLengthValidator(2)], max_length=6, blank=False,unique = True)
 
     def __str__(self):
         return self.fullName

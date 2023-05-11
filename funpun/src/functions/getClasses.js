@@ -1,12 +1,12 @@
 import axios from "axios";
-
+import { path } from './path'
 
 const getClasses = async (id) => {
     console.log('i am here!!!!',id)
 
 
     try {
-        const { data } = await axios.get(`http://127.0.0.1:8000/school/Classroom/${id}/`,
+        const { data } = await axios.get(`${path}/school/Classroom/${id}/`,
             {
                 headers: {
                     'Content-Type': 'application/json'

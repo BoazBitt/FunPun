@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { path } from './path'
 
 const signUpUser = async (signUpData) => {
     console.log("in function")
@@ -9,7 +9,7 @@ const signUpUser = async (signUpData) => {
     console.log(jsonfile)
     
     try {
-        const { data } = await axios.post('http://127.0.0.1:8000/signup',
+        const { data } = await axios.post(`${path}/signup`,
             {
                 headers: {
                     'Content-Type': 'application/json',

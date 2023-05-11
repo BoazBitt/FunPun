@@ -63,3 +63,7 @@ class CreateClassroomSerializer(serializers.ModelSerializer):
         model = Classroom
         fields = ['classID', 'teacher', 'capacity', 'classLevel']
 
+class StudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Student
+        fields = ['fullName', 'classroom', 'hashkey']

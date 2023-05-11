@@ -1,10 +1,10 @@
 import axios from "axios";
-
+import { path } from './path'
 
 const getUserInfo = async (loginData) => {
 
     try {
-        const { data } = await axios.post('http://127.0.0.1:8000/auth',
+        const { data } = await axios.post(`${path}/auth`,
             {
                 headers: {
                     'Content-Type': 'application/json'
@@ -13,7 +13,7 @@ const getUserInfo = async (loginData) => {
                 password: loginData.password
             },);        
         const token = data.token;
-        const response = await axios.get(`http://127.0.0.1:8000/account/${loginData.username}/`,
+        const response = await axios.get(`${path}/account/${loginData.username}/`,
         {
             headers: {
                 'Content-Type': 'application/json'

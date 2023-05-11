@@ -1,11 +1,11 @@
 import axios from "axios";
-
+import { path } from './path'
 
 const deleteClassroom = async (ClassroomData) => {
     console.log("in func!",ClassroomData)
 
     try {
-        const { data } = await axios.delete(`http://127.0.0.1:8000/school/Classroom/${ClassroomData.classID}/`,
+        const { data } = await axios.delete(`${path}/school/Classroom/${ClassroomData.classID}/`,
             {
                 headers: {
                     'Content-Type': 'application/json'

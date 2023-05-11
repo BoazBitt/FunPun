@@ -1,10 +1,10 @@
 import axios from "axios";
-
+import { path } from './path'
 
 const getSentences = async (id) => {
 
     try {
-        const { data } = await axios.get(`http://127.0.0.1:8000/sentence/${id}/`,
+        const { data } = await axios.get(`${path}/sentence/${id}/`,
             {
                 headers: {
                     'Content-Type': 'application/json'

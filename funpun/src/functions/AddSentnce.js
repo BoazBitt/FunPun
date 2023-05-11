@@ -1,10 +1,13 @@
 import axios from "axios";
 import S1 from '../Data/sentences'
+import { path } from './path'
+
+
 
 const AddSentence = async (sentence) =>{
     
     try {
-        const { data } = await axios.post(`http://127.0.0.1:8000/sentence/`,
+        const { data } = await axios.post(`${path}/sentence/`,
             {
                 headers: {
                     'Content-Type': 'application/json'
