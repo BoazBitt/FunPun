@@ -20,24 +20,25 @@ const Teacher = () => {
   const [showStudents, setShowStudents] = useState(null)
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(true)
+  const [loader2, setLoader2] = useState(false)
   const [visable, setVisable] = useState(false)
   const [data, setData] = useState({ classID: '', capacity: 0, classLevel: 0 })
-  const user = useSelector(state=>state.auth.user)
+  const user = useSelector(state => state.auth.user)
   const onchangeHnadler = (e, type) => {
     setData({ ...data, [type]: e.target.value })
   }
   const links = []
-  const genertaeLink = (classID,classLevel) => {
+  const genertaeLink = (classID, classLevel) => {
     const link = `http://localhost:3000/Student?classroom=${classID}&classLevel=${classLevel}`
     return link
   }
   for (let i = 0; i < classrooms.length; i++) {
-    links.push(genertaeLink(classrooms[i].classID,classrooms[i].classLevel))
+    links.push(genertaeLink(classrooms[i].classID, classrooms[i].classLevel))
 
   }
 
   useEffect(() => {
-  
+
     getClasses(user.user).then((classrooms) => {
       console.log(data)
       dispatch(authActions.setClassrooms(classrooms))
@@ -57,6 +58,7 @@ const Teacher = () => {
       alert('Capacity is required')
       return
     }
+    setLoader2(prev => !prev)
     console.log(data)
     createClassroom({ ...data, teacher: user.user })
       .then((data) => {
@@ -64,6 +66,8 @@ const Teacher = () => {
         getClasses(user.user).then((data) => {
           dispatch(authActions.setClassrooms(data))
           setVisable(prev => !prev)
+          setLoader2(prev => !prev)
+
         })
 
 
@@ -77,14 +81,14 @@ const Teacher = () => {
     navigator.clipboard.writeText(links[index]);
     setActiveIndex(index);
   };
-  const deleteClass = (myclass)=>{
+  const deleteClass = (myclass) => {
     deleteClassroom(myclass)
-    .then(response => {
-      console.log(response.data);
-    })
-    .catch(error => {
-      console.log(error.response);
-    });
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
 
 
   }
@@ -112,7 +116,7 @@ const Teacher = () => {
           <div className={classes.btns}>
             <span onClick={() => { setVisable(prev => !prev) }}>Add Group</span>
           </div>
-          <div style={classrooms.length>5?{ overflowY: "scroll", height: "330px" }:null}
+          <div style={classrooms.length > 5 ? { overflowY: "scroll", height: "330px" } : null}
             className={classes.classroomContianer}>
             {classrooms && <>
               {
@@ -122,8 +126,8 @@ const Teacher = () => {
                       key={index}
                       className={`${classes.classroom} ${index === activeIndex ? classes.activeClassroom : ''}`}
                       onClick={() => { showStudentsHandler(index) }}
-                      style={myclass.students.length===0?{ paddingLeft:"60px" }:null}>
-                      {myclass.students.length>0&& <div className={classes.classroom_icon}><FcPlus/></div>}
+                      style={myclass.students.length === 0 ? { paddingLeft: "60px" } : null}>
+                      {myclass.students.length > 0 && <div className={classes.classroom_icon}><FcPlus /></div>}
                       <div className={classes.classroom_id}>{myclass.classID}</div>
                       <div className={classes.classroom_capity}>{myclass.students.length}/{myclass.capacity}</div>
                       <div className={classes.classroom_level}>{myclass.classLevel}</div>
@@ -133,20 +137,20 @@ const Teacher = () => {
                         <div className={classes.classroom_link}>Link for Class</div>
                       )}
                       <AiFillCopy onClick={(event) => handleCopyLink(event, index)} />
-                      <BsTrash3 onClick={()=>{deleteClass(myclass)}}/>
+                      <BsTrash3 onClick={() => { deleteClass(myclass) }} />
                     </div>
-                    
-                      {index === showStudents && < >
-                        {myclass.students.map((student) =>
-                          <div className={classes.studentInfo}>
-                            <div className={classes.student_name}>{student.fullName}</div>
-                            <div className={classes.student_done}>{student.done ? 'Done' : 'Not Done'}</div>
-  
-                          </div>
-                        )}
-                      </>}
 
-                    
+                    {index === showStudents && < >
+                      {myclass.students.map((student) =>
+                        <div className={classes.studentInfo}>
+                          <div className={classes.student_name}>{student.fullName}</div>
+                          <div className={classes.student_done}>{student.done ? 'Done' : 'Not Done'}</div>
+
+                        </div>
+                      )}
+                    </>}
+
+
                   </>
 
                 ))
@@ -175,6 +179,10 @@ const Teacher = () => {
             </div>
             <div className={classes.btns}>
               <span onClick={createGroup}>Create Group</span>
+
+            </div>
+            <div className={classes.classloader}>
+              <ClipLoader size={30} color={"#9ACD32"} loading={loader2} speedMultiplier={1} />
             </div>
 
           </>}

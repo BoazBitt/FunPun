@@ -115,6 +115,20 @@
 
 @media only screen and (max-width: 600px) {
   .container {
+    #title {
+      font-size: 60px;
+
+    }
+    .__content{
+      .instruct{
+        h1{
+          font-size: 30px;
+
+
+        }
+        
+      }
+    }
     padding-top: 50px;
 
     .in {
@@ -126,7 +140,7 @@
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
   .container {
     .in {
       padding: 30px;
@@ -141,7 +155,7 @@
         font-size: 40px;
         padding-left: 10px;
         border: none;
-        width: 204px;
+        width: 100%;
         height: 52px;
         background: #ffffff;
         border-radius: 12px;
@@ -149,6 +163,14 @@
 
       input:focus {
         outline: none;
+      }
+    }
+    .word {
+
+      .mybox {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 20px !important;
       }
     }
 

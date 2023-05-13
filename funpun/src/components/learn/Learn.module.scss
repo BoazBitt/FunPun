@@ -205,6 +205,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
   .start {
     color: white;
     display: flex;
@@ -212,17 +213,20 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+
     h1 {
       font-family: "Rubik Vinyl", cursive;
       margin: 0;
       font-size: 100px;
     }
+
     .startBtn {
       height: 80%;
       display: flex;
       justify-content: center;
       align-items: center;
-      button{
+
+      button {
         font-size: 40px;
         width: 200px;
         height: 200px;
@@ -237,6 +241,7 @@
     justify-content: flex-start;
     align-items: center;
     overflow: hidden;
+
     h1 {
       width: 100%;
       text-align: center;
@@ -244,6 +249,7 @@
       font-size: 100px;
       font-family: "Rubik Vinyl", cursive;
     }
+
     height: 100%;
   }
 
@@ -254,15 +260,18 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
     h1 {
       font-family: "Fredoka", sans-serif;
     }
+
     .btnsContnet {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 20px;
+
       span {
         display: flex;
         align-items: center;
@@ -349,13 +358,80 @@
 
 @media only screen and (max-width: 700px) {
   .container {
-    border: 2px solid red;
+    padding-top: 30px;
+
     height: calc(100vh - 120px);
+
     .start {
-      .info {
-        h1 {
-          font-size: 30px;
-        }
+      h1 {
+
+        font-size: 40px;
+      }
+
+    }
+
+    .top {
+      h1 {
+
+        font-size: 50px;
+      }
+
+    }
+  }
+  .doneLearning {
+    
+    
+    .btnsContnet {
+
+      span {
+        height: 150px !important;
+        width: 150px !important;
+        font-size: 15px !important;
+      }
+
+      .anch {
+        font-size: 15px;
+      }
+    }
+  }
+
+}
+
+@media only screen and (max-width: 350px) {
+  .container {
+    padding-top: 30px;
+
+    height: calc(100vh - 120px);
+
+    .start {
+      h1 {
+
+        font-size: 30px;
+      }
+
+    }
+
+    .top {
+      h1 {
+
+        font-size: 35px;
+      }
+
+    }
+  }
+  .doneLearning {
+    
+    
+    .btnsContnet {
+
+      span {
+        height: 120px !important;
+        width: 120px !important;
+        font-size: 12px !important;
+      }
+
+      .anch {
+        font-size: 15px;
       }
     }
   }
@@ -374,6 +450,7 @@ button {
   transition: 0.2s;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
 button:hover {
   box-shadow: none;
   background: #403784;

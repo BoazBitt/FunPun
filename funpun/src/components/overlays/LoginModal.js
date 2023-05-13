@@ -41,7 +41,6 @@ const LoginModal = () => {
             return;
         }
         setLoader(true)
-
         setloginData(data);
     }
     useEffect(() => {
@@ -89,6 +88,11 @@ const LoginModal = () => {
     const onInputChange = (e, field) => {
         setData({ ...data, [field]: e.target.value })
     }
+    const handleKeyDown = event => {
+        if (event.key === 'Enter') {
+          signInHandler(event);
+        }
+    }
 
 
     return (
@@ -109,6 +113,7 @@ const LoginModal = () => {
                     onInputChange={onInputChange}
                     input={'password'}
                     password={data.password}
+                    handleKeyDown={handleKeyDown}
                     place='סיסמא' />
             </ModalContent>
             <Social />

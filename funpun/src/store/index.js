@@ -13,50 +13,42 @@ const store = configureStore({
     },
     preloadedState: {
         auth: {
-            isAuthenticated: localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth')).isAuthenticated : false,
-            user: localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth')).user : null,
-            Token: localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth')).Token : "",
-            sentences: localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth')).sentences : null,
-            points: localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth')).points : 0,
-            classrooms: localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth')).classrooms : [],
-
+            
+            isAuthenticated: localStorage.getItem('auth') && checkTime() ? JSON.parse(localStorage.getItem('auth')).isAuthenticated : false,
+            user: localStorage.getItem('auth') && checkTime() ? JSON.parse(localStorage.getItem('auth')).user : null,
+            Token: localStorage.getItem('auth')&& checkTime() ? JSON.parse(localStorage.getItem('auth')).Token : "",
+            sentences: localStorage.getItem('auth') && checkTime()? JSON.parse(localStorage.getItem('auth')).sentences : null,
+            points: localStorage.getItem('auth') && checkTime()? JSON.parse(localStorage.getItem('auth')).points : 0,
+            classrooms: localStorage.getItem('auth') && checkTime()? JSON.parse(localStorage.getItem('auth')).classrooms : [],
         }
     }
 
 });
 
 
-store.subscribe(() => {
-    const { auth } = store.getState()
-    localStorage.setItem('auth', JSON.stringify(auth))
-})
-// const expiresIn = 60 * 60 * 1000; // 1 hour in milliseconds
-
 // store.subscribe(() => {
-//   const { auth } = store.getState();
-//   const expirationTime = new Date().getTime() + expiresIn;
-//   const authData = {
-//     auth,
-//     expirationTime,
-//   };
-//   localStorage.setItem("auth", JSON.stringify(authData));
-// });
+//     const { auth } = store.getState()
+//     localStorage.setItem('auth', JSON.stringify(auth))
+// })
+const expiresIn = 30*60*1000;
 
-// function getAuthData() {
-//     const authDataString = localStorage.getItem("auth");
-//     if (!authDataString) {
-//       return null;
-//     }
-  
-//     const authData = JSON.parse(authDataString);
-//     const currentTime = new Date().getTime();
-  
-//     if (currentTime > authData.expirationTime) {
-//       localStorage.removeItem("auth");
-//       return null;
-//     }
-  
-//     return authData.auth;
-//   }
+store.subscribe(() => {
+  const { auth } = store.getState();
+  const expirationTime = new Date().getTime() + expiresIn;
+  localStorage.setItem("auth", JSON.stringify(auth));
+  localStorage.setItem("time", expirationTime);
+});
+
+function checkTime() {
+  const storedTime = parseInt(localStorage.getItem("time"));
+  if (!storedTime || isNaN(storedTime)) return false;
+  const currentTime = new Date().getTime();
+  if (currentTime > storedTime) {
+    localStorage.removeItem("auth");
+    localStorage.removeItem("time");
+    return false;
+  }
+  return true;
+}
   
 export default store;

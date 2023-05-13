@@ -15,6 +15,7 @@ import Navbar from "./components/NavBar/Navbar";
 import Board from "./components/Games/CardGame/Board";
 import Jumble from "./components/Games/WordJumble/WordsJumble";
 import Whack from "./components/Games/Whack/Whack";
+import WordSearch from "./components/Games/WordSearch/WordSearch";
 import Test from "./components/test/Test";
 import Speech2Text from "./components/speach/Speech2Text";
 import Admin from "./components/Admin/Admin";
@@ -59,6 +60,7 @@ const App = () => {
               <Route path="/VerbalTest" element={<Speech2Text />} />
               <Route path="/Whack" element={<Whack />} />
               <Route path="/CardGame" element={<Board />} />
+              <Route path="/WordSearch" element={<WordSearch />} />
               <Route path="/Admin" element={<Admin />} />
               <Route path="/Teacher" element={<Teacher />} />
               <Route path="/Student" element={<StudentLearn />} />

@@ -1,0 +1,34 @@
+.WordsSearch {
+    height: calc(100vh - 72px);
+
+
+    #title {
+        padding-top: 72px;
+        font-size: 60px;
+        font-family: "Rubik Vinyl", cursive;
+        text-transform: capitalize;
+        margin: 0;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 600px) {
+    .WordsSearch {
+    
+    
+        #title {
+            padding-top: 102px;
+            font-size: 40px;
+            font-family: "Rubik Vinyl", cursive;
+            text-transform: capitalize;
+            margin: 0;
+        }
+    
+    
+    
+    }
+
+
+}

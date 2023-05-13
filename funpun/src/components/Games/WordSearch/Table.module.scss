@@ -1,0 +1,72 @@
+.table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .matrix {
+ 
+         width: 50%;
+         .row {
+             display: flex;
+ 
+             .char {
+                 font-size: 2rem;
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+                 border: 1px solid #ccc;
+ 
+             }
+         }
+     }
+}
+.bank {
+    display: flex;
+    flex-direction: column;
+    
+    .bankHead {
+        display: inherit;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        
+    }
+    
+    .bankWords {
+        font-size: 25px;
+        gap: 30px;
+        display: inherit;
+        justify-content: center;
+        align-items: center;
+        
+
+
+
+
+    }
+
+
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+    button{
+        
+        border: 3px solid yellowgreen;
+
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .table{
+        .matrix {
+
+     
+             width: 100%;
+
+         }
+    }
+
+}

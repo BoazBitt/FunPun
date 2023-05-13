@@ -2,6 +2,7 @@ import { Fragment, useState, useEffect } from "react";
 // import { useSelector } from "react-redux";
 // import clasess from "./Board.module.scss";
 import Card from "./Card";
+import classes from './Board.module.scss'
 
 const Cards = (props) => {
   const [turns, setTurns] = useState(0);
@@ -53,7 +54,8 @@ const Cards = (props) => {
       {/* {!start && <span className={clasess.btn} onClick={startHandler}>Lets Play</span>} */}
       {start &&
         <div className="outcontainer">
-          <h1 className="name">משחק זכרון</h1>
+          <h1 className={classes.title}>Memory Game</h1>
+
           <center className="turns"> ניסיונות : {turns}</center>
           <br /><br /><br />
           <div className="container">
@@ -64,8 +66,8 @@ const Cards = (props) => {
                 id={index}
                 handleClick={handleClick} />))}
           </div>
-          
-          
+
+
         </div>}
     </Fragment>
   );

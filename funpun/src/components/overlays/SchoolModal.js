@@ -40,7 +40,7 @@ const SchoolModal = () => {
   const [inputValue, setInputValue] = useState("");
   const filteredCities = Cities.filter(city => city.toLowerCase().startsWith(inputValue.toLowerCase()));
 
-  
+
   const [formData, setFormData] = useState(null)
 
   // useEffect(() => {
@@ -101,13 +101,22 @@ const SchoolModal = () => {
 
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData])
+
+  const handleKeyDown = event => {
+    if (event.key === 'Enter') {
+      if (!state) {
+        clickhandler('Login')
+      }
+
+    }
+  }
 
 
   return (
     <div dir="rtl" className={classes.content}>
-      <Exit/>
+      <Exit />
       <div className={classes.btns}>
         <button onClick={changeswitch}>{!state ? 'SignUp' : 'Login'}</button>
       </div>
@@ -118,8 +127,10 @@ const SchoolModal = () => {
           <Password
             onInputChange={onInChange}
             input={'password'}
+            handleKeyDown={handleKeyDown}
             password={dataIn.password}
             place='סיסמא' />
+
         </ModalContent>
       </div>}
       {state && <div>
@@ -141,11 +152,14 @@ const SchoolModal = () => {
           <Input name='lastname' place='שם משפחה' value={dataUp.last_name} onInputChange={onUpChange} input='last_name' />
           <Input name='school_name' place='בית ספר' value={dataUp.school_name} onInputChange={onUpChange} input='school_name' />
           <input list='cities' placeholder='עיר מגורים' value={dataUp.city} onChange={(e) => { onUpChange(e, 'city') }} />
-        <datalist id='cities'>
-          {filteredCities.map((city) => (
-            <option value={city} key={city} />
-          ))}
-        </datalist>        </ModalContent>
+      
+            <datalist id='cities' >
+              {filteredCities.map((city) => (
+                <option value={city} key={city}/>
+              ))}
+            </datalist>
+
+        </ModalContent>
 
       </div>}
 

@@ -12,6 +12,7 @@
     justify-content: center;
     height: 50%;
     .sentence {
+
       font-family: "Fredoka", sans-serif;
       font-size: 100px;
       transition: 0.2s;
@@ -45,17 +46,71 @@
     color: yellow;
   }
 }
+@media only screen and (max-width: 700px) {
+  .game {
+   
 
-@keyframes wordout {
-  0% {
-    color: white;
-  }
+    .sentence_results {
 
-  100% {
-    color: #29215a;
+      .sentence {
+        font-size: 42px;
+        
+        .word {
+          font-size: 42px;
+        }
+      }
+      .results {
+        font-size: 42px;
+
+      }
+    }
   }
+  @keyframes wordEnter {
+    0% {
+      color: white;
+    }
+  
+    100% {
+      font-size: 52px;
+      font-weight: bold;
+      color: yellow;
+    }
+  }
+ 
 }
 
+@media only screen and (max-width: 375px) {
+  .game {
+   
+
+    .sentence_results {
+
+      .sentence {
+        font-size: 30px;
+        
+        .word {
+          font-size: 30px;
+        }
+      }
+      .results {
+        font-size: 30px;
+
+      }
+    }
+  }
+  @keyframes wordEnter {
+    0% {
+      color: white;
+    }
+  
+    100% {
+      font-size: 30px;
+      font-weight: bold;
+      color: yellow;
+    }
+  }
+ 
+}
 // @media (max-width: 600px) {
 //     .game {
 //         padding-top: 50px;

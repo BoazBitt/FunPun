@@ -26,6 +26,7 @@ const Password = (props) => {
                 placeholder={place}
                 className={classes.inputField}
                 onChange={(event) => { props.onInputChange(event,input) }}
+                onKeyDown={props.handleKeyDown}
             />
         </div>
     );

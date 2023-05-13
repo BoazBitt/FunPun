@@ -127,11 +127,12 @@
     }
   }
 }
+
 @media only screen and (min-width: 700px) {
   #title {
     font-size: 30px;
   }
-  
+
   .hole {
     height: 100px;
     width: 100px;
@@ -148,36 +149,90 @@
     }
   }
 }
-@media only screen and  (max-width: 700px){
-  #title {
-    border: 2px solid rgb(0, 255, 251);
-    font-size: 00px;
-    font-family: "Rubik Vinyl", cursive;
-    text-transform: capitalize;
-    margin: 0;
+
+@media only screen and (max-width: 700px) {
+  .whack {
+    margin-top: 30px;
+    #title {
+      font-size: 30px !important;
+      font-family: "Rubik Vinyl", cursive;
+      text-transform: capitalize;
+      margin: 0;
+    }
+
+    .data {
+
+      .score {
+        text-align: center;
+        font-size: 25px !important;
+        text-shadow: 1px;
+      }
+
+      .instructions {
+
+        h1 {
+          margin: 0;
+          font-size: 25px !important;
+
+
+          span {
+            color: yellow;
+          }
+        }
+      }
+    }
+
+    .hole {
+      height: 15vw;
+      width: 15vw;
+      border-radius: 50% 50% 0 0;
+
+      img {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+      }
+    }
   }
+
+
+}
+
+
+
+
+
+
+@media only screen and (max-width: 270px) {
+  *{
+    color: white;
+  }
+  #title {
+    border: 2px solid rgb(0, 255, 0);
+
+  }
+
   .data {
-    border: 2px solid rgb(0, 255, 251);
+    border: 2px solid rgb(0, 255, 0);
 
     .score {
-      border: 2px solid rgb(0, 255, 251);
-      text-align: center;
-      font-size: 00px;
-      text-shadow: 1px;
+      border: 2px solid rgb(0, 255, 0);
+
     }
 
     .instructions {
-      border: 2px solid rgb(0, 255, 251);
-      font-size: 00px;
+      border: 2px solid rgb(0, 255, 0);
+
       h1 {
-        border: 2px solid rgb(0, 255, 251);
-        margin: 0;
-        font-size: 00px;
+        border: 2px solid rgb(0, 255, 0);
 
 
-        span {
-          color: yellow;
-        }
+
+        // span {}
       }
     }
   }
@@ -192,12 +247,12 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       object-fit: cover;
     }
   }
-  
+
 }
 
 // @media only screen and (max-width: 700px) {
@@ -244,4 +299,3 @@
 //     }
 //   }
 // }
-
