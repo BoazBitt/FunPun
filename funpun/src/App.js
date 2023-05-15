@@ -4,7 +4,7 @@ import {
   Routes,
   Route,
   useLocation,
-  // Navigate,
+  Navigate,
 } from "react-router-dom";
 import { useLayoutEffect, Profiler } from "react";
 
@@ -16,6 +16,7 @@ import Board from "./components/Games/CardGame/Board";
 import Jumble from "./components/Games/WordJumble/WordsJumble";
 import Whack from "./components/Games/Whack/Whack";
 import WordSearch from "./components/Games/WordSearch/WordSearch";
+import HangedMan from "./components/Games/HangedMan/HangedMan";
 import Test from "./components/test/Test";
 import Speech2Text from "./components/speach/Speech2Text";
 import Admin from "./components/Admin/Admin";
@@ -61,10 +62,11 @@ const App = () => {
               <Route path="/Whack" element={<Whack />} />
               <Route path="/CardGame" element={<Board />} />
               <Route path="/WordSearch" element={<WordSearch />} />
+              <Route path="/Hanged" element={<HangedMan/>} />
               <Route path="/Admin" element={<Admin />} />
               <Route path="/Teacher" element={<Teacher />} />
               <Route path="/Student" element={<StudentLearn />} />
-              {/* <Route path="*" element={<Navigate to="/" />} /> */}
+              <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />
         </Router>

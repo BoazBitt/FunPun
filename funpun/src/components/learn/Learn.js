@@ -10,10 +10,10 @@ import DUMMY_SENTENCES from "../../Data/DUMMY_SENTENCES";
 // import board4 from "../assets/images/board4.png";
 // import back from '../assets/images/back.jpg'
 
-const allgames = ["WordSearch"];
+const allgames = ['Hanged'];
 const NUMOFGAMES = allgames.length;
 
-//'CardGame','Jumble','Whack' ,'WordSearch'
+//'CardGame','Jumble','Whack' ,'WordSearch','Hanged'
 
 const Learn = () => {
   const navigation = useNavigate();

@@ -2,8 +2,8 @@ const placeWordsInMatrix = (matrixSize, wordsArray) => {
     const maxLength = matrixSize - 1;
     const lowercaseData = wordsArray.map(obj => ({
         ...obj,
-        // content: obj.content.toLowerCase()
-        content: obj.content.toUpperCase()
+        content: obj.content.toLowerCase()
+        // content: obj.content.toUpperCase()
     }));
     const matrix = Array.from({ length: matrixSize }, () =>
         Array.from({ length: matrixSize }, () => false)

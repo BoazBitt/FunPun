@@ -75,7 +75,7 @@ const Whack = () => {
 
   return (
     <Container color={"#29215A"}>
-      
+
 
       {start && (
         <div className={classes.whack}>
@@ -83,7 +83,7 @@ const Whack = () => {
           <div className={classes.data}>
             <div className={classes.score}>התוצאה שלך: {score}</div>
             <div className={classes.instructions}>
-            <h1>מה התרגום של המילה {' '}<span>{initialState[next + 1].content}</span> באנגלית</h1>
+              <h1>מה התרגום של המילה {' '}<span>{initialState[next + 1].content}</span> באנגלית</h1>
             </div>
           </div>
 
@@ -97,8 +97,8 @@ const Whack = () => {
                 >
                   {index === randomDivIndex && (
                     <div className={classes.mole}>
-                        <span>{div.content}</span>
-                        <img src={mole} alt="mole" />
+                      <span>{div.content}</span>
+                      <img src={mole} alt="mole" />
                     </div>
                   )}
                 </div>

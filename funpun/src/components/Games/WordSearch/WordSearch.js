@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './WordSearch.module.scss'
 import Container from '../../container/Container'
 import DUMMY from "../../../Data/DUMMY_WORDS";
-import { useLocation, /*useNavigate*/ } from "react-router-dom";
+import { useLocation} from "react-router-dom";
 import placeWordsInMatrix from '../../../functions/createMatrix'
 import Table from './Table';
 

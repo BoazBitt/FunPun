@@ -78,8 +78,20 @@ const Table = props => {
                         בנק מילים
                     </div>
                     <div className={classes.bankWords}>
-                        {hebrewwords.map((word, index) => <p style={foundBank(word) ? { color: 'red' } : { color: 'white' }} key={index}>{word}</p>)}
+                        {hebrewwords.map((word, index) => (
+                            <p
+                                style={
+                                    foundBank(word)
+                                        ? { color: 'red', textDecoration: 'line-through' }
+                                        : { color: 'white' }
+                                }
+                                key={index}
+                            >
+                                {word}
+                            </p>
+                        ))}
                     </div>
+
 
                 </div>
                 <div className={classes.table}>
@@ -97,7 +109,7 @@ const Table = props => {
                                         }}
                                         style={foundinSelect(rowIndex, colIndex) ? {
                                             boxShadow: ''
-                                            , backgroundColor: 'yellow', color: 'black'
+                                            , backgroundColor: 'yellowgreen', color: 'black'
                                         }
                                             :
                                             foundinSolved(rowIndex, colIndex) ? {
