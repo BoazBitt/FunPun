@@ -79,6 +79,7 @@ $secondary-color: #ffffff;
         color: white;
         font-size: 1.5rem;
     }
+ 
 
     .Login {
         display: flex;
@@ -380,6 +381,16 @@ $secondary-color: #ffffff;
                 height: 30px;
             }
 
+        }
+        .ChatBox{
+            width: 220px;
+            .chat{
+                .reciver{
+
+                    margin-right: 0%;
+                    
+                }
+            }
         }
 
         .Login {

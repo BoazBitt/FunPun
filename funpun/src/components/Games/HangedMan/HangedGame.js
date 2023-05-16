@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import classes from './HangedGame.module.scss'
 import Figure from './Figure'
 import { useNavigate } from "react-router-dom";
+import Confetti from 'react-confetti'
 
 
 const HangedGame = props => {
@@ -16,11 +17,12 @@ const HangedGame = props => {
     const [correctLetters, setCorrectLetters] = useState([])
     const [letter, setLetter] = useState('')
     const [msg, setMsg] = useState('')
+    const [myConffeti , setConffeti] = useState(false)
 
-    
 
 
-    const isCharCorrect = char =>  correctLetters.includes(char);
+
+    const isCharCorrect = char => correctLetters.includes(char);
 
     const checkLetter = () => {
         if (letter === '') return
@@ -33,7 +35,7 @@ const HangedGame = props => {
 
         } else {
             if (wrongLetters.includes(letter)) {
-                setMsg('ניחשת את האות הזו.'); 
+                setMsg('ניחשת את האות הזו.');
                 return;
             }
             setWrongLetters([...wrongLetters, letter]);
@@ -41,63 +43,69 @@ const HangedGame = props => {
         setLetter('')
     }
     const procced = () => {
-        if (next === englishwords.length-1 ) {
+        if (next === englishwords.length - 1) {
             setNext(0)
             //update user's score!
             navigation("/");
-            
+
             return
-            
+
         }
-        setNext(prev => prev + 1)
-        setCorrectLetters([])
-        setWrongLetters([])
-        
-        
+        setConffeti(prev=>!prev)
+        setTimeout(() => {
+            setNext(prev => prev + 1)
+            setCorrectLetters([])
+            setWrongLetters([])
+            setConffeti(prev=>!prev)
+
+        }, 3000);
+
+
+
     }
     useEffect(() => {
         if (checkDone()) {
-            setGussedRight(prev=>prev+1);
-            
+            setGussedRight(prev => prev + 1);
+
         }
-        
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [correctLetters])
     useEffect(() => {
-        if (wrongLetters.length === 16) {
+        if (wrongLetters.length === 6) {
             procced();
-            setGussedRight(prev=>prev+1);
-            
+            setGussedRight(prev => prev + 1);
+
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [wrongLetters])
-    
+
     useEffect(() => {
         setChars(englishwords[next].split(''))
-        
-        
-        
+
+
+
         // eslint-disable-next-line react-hooks/exhaustive-deps 
     }, [next])
-    
+
 
     const checkDone = () => {
         const set1 = new Set(chars);
         const set2 = new Set(correctLetters);
         const flag = set1.size === set2.size && [...set1].every(value => set2.has(value))
-        if (flag) 
-        
-        
-        return flag;
+        if (flag)
+
+
+            return flag;
     }
-    
-    useEffect(()=>{
-        if(checkDone()){
+
+    useEffect(() => {
+        if (checkDone()) {
             procced();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[gussedRight])
-    
+    }, [gussedRight])
+
     const onChangeHandler = (e) => {
         const value = e.target.value;
         const alphabetRegex = /^$|^[a-zA-Z]$/;
@@ -121,7 +129,7 @@ const HangedGame = props => {
 
     return (
         <div className={classes.game}>
-
+            {myConffeti && <Confetti tweenDuration={1}/>}
             <div className={classes.instructions}>
                 <h1>מה התרגום של המילה {' '}<span>{hebrewwords[next]}</span> באנגלית</h1>
             </div>
@@ -140,10 +148,10 @@ const HangedGame = props => {
                     <div className={classes.chars}>
                         <div className={classes.char}>
                             {chars.map((char, index) => {
-                                return <div key={index}>{isCharCorrect(char) ? char : '$'}</div>
+                                return <div className={`${classes.line}`} style={{ border: `${isCharCorrect(char) ? 'none' : ''}` }} key={index}>{isCharCorrect(char) ? char : ''}</div>
                             })}
                         </div>
- 
+
 
                     </div>
                     <div className={classes.wornged}>

@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'account',
     'allSentences',
     'School',
+    'Message',
     'djongo',
     'corsheaders',
     'rest_framework',

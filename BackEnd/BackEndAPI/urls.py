@@ -26,5 +26,6 @@ urlpatterns = [
     path('signup', RegisterView.as_view(), name="signup"),
     path('account/', include('account.urls')),
     path('sentence/', include('allSentences.urls')),
+    path('message/', include('Message.urls')),
     path('school/', include('School.urls')),
 ]
