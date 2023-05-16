@@ -42,6 +42,12 @@ const SendMessage = () => {
                 ;
         })
     }
+
+    const keyDownHandler = (e) => {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    }
     return (<>
         {!allMessages ? <ClipLoader size={30} color={"#9ACD32"} loading={loader2} speedMultiplier={1} /> :
             <div dir="rtl" className={classes.content}>
@@ -57,20 +63,23 @@ const SendMessage = () => {
                                 <div key={index} dir='rtl' className={classes.sender}>{message.content}</div>
                                 :
                                 <div key={index} className={classes.reciver} dir='ltr'>{message.content}</div>
-
-
                         )}
 
                     </div>
                     <div className={classes.reply}>
-                        <input className={classes.input} type="text" placeholder="הקלד הודעה" value={message} onChange={(e) => { setMessage(e.target.value) }} />
+                        <input className={classes.input}
+                            type="text"
+                            placeholder="הקלד הודעה"
+                            value={message}
+                            onKeyDown={keyDownHandler}
+                            onChange={(e) => { setMessage(e.target.value) }} />
                         <div className={classes.icon} onClick={sendMessage}>
-                            {/* <IoIosSend  color="yellowgreen" className="custom-icon" /> */}
-                            <IoIosSend size={30}
+                            <IoIosSend size={30} color="yellowgreen" className="custom-icon" />
+                            {/* <IoIosSend size={30}
                                 style={{ color: '#000000', transition: 'color 0.3s ease' }}
                                 onMouseEnter={(e) => e.target.style.color = '#ff0000'}
-                                onMouseLeave={(e) => e.target.style.color = '#000000'}
-                            />
+                                onMouseLeave={(e) => e.target.style.color = '#ADD8E6'}
+                            /> */}
                         </div>
                     </div>
                 </div>
