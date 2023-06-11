@@ -44,42 +44,22 @@ const LoginModal = () => {
         setloginData(data);
     }
     useEffect(() => {
-        if (loginData) {
-            // getUserInfo(loginData).then((data) => {
-            //     dispatch(authActions.login(data));
-            //     dispatch(modalActions.closeModal())
-            //     getSentences(data.user.user).then((sentences)=>{
-            //         console.log('sentences',sentences)
-            //         dispatch(authActions.setSentences(sentences))
-            //     })
-
-            // })
-            getUserInfo(loginData)
-                .then((data) => {
-                    console.log(data)
-                    dispatch(authActions.login(data));
-                    dispatch(modalActions.closeModal())
-                    getSentences(data.user.user)
-                        .then((sentences) => {
-                            dispatch(authActions.setSentences(sentences))
-                            setLoader(false)
-                            setErr('')
-                        })
-                        .catch((error) => {
-                            console.error('Error fetching sentences:', error);
-                        });
-                })
-                .catch((error) => {
-                    dispatch(modalActions.closeModal())
-                    dispatch(modalActions.openModal({ modalType: 'Login', modalArgs: null }))
-                    setLoader(false)
-                    setData({ username: "", password: '' })
-                    setErr('שם משתמש או סיסמא לא נכונים')
-
-                    console.error('Error fetching user info:', error);
-                });
+        const fetchData = async () => {
+            if (loginData) {
+                const userData = await getUserInfo(loginData);
+                console.log(userData)
+                dispatch(authActions.login(userData));
+                dispatch(modalActions.closeModal())
+                const fetchSentnce = await getSentences(userData.user.user)
+                dispatch(authActions.setSentences(fetchSentnce))
+                setLoader(prev =>!prev)
+                setErr('')
+        
+            }
 
         }
+        fetchData()
+
 
 
     }, [loginData, dispatch])
@@ -90,7 +70,7 @@ const LoginModal = () => {
     }
     const handleKeyDown = event => {
         if (event.key === 'Enter') {
-          signInHandler(event);
+            signInHandler(event);
         }
     }
 

@@ -32,6 +32,8 @@ const Wrapper = ({ children }) => {
   return children;
 };
 
+
+
 const App = () => {
   console.count("App.js:");
   function onRenderCallback(
@@ -74,5 +76,7 @@ const App = () => {
     </Profiler>
   );
 };
+
+
 
 export default App;

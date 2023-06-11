@@ -5,8 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store';
+// import ActivityDetection from './hooks/ActivityDetection'
+// import { authActions } from './store/authSlicer';
+// import { useDispatch } from 'react-redux';
 
-console.count("index")
+// const handleInActivity = ()=>{
+//   const dispatch = useDispatch();
+//   dispatch(authActions.logout());
+// }
+
+// const AppWithInactivityCheck = ActivityDetection(App);
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>

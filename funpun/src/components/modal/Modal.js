@@ -10,9 +10,9 @@ import SchoolModal from '../overlays/SchoolModal';
 import { useSelector } from 'react-redux';
 
 
-const Modal = props => {
+const Modal = () => {
     const myModal = useSelector(state=>state.modal)
-    console.count('modal')
+    console.count('model')
     return (
         <div className={classes.back}>
             <Animated animationIn="zoomIn"

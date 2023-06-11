@@ -8,8 +8,6 @@ const Word = (props) => {
 
   const { w1, w2 } = props;
   const chars = w1.split('');
-
-
   const [value, setValue] = useState('');
   const [startTime, setStartTime] = useState(Date.now()); // set start time when component mounts
   const [endTime, setEndTime] = useState(0);
@@ -46,6 +44,7 @@ const Word = (props) => {
     setRes({ proceed: true, type: 'Correct' });
     props.setTime(elapsedTime)
     setStartTime(Date.now())
+    if (props.next===8)props.setDone(prev=>!prev)
     props.clickHandler();
 
   };

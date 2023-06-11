@@ -3,22 +3,21 @@ import { path } from './path'
 
 
 
-const AddSentence = async (sentnce) =>{
-    
+const UpdateUser = async (id,userData) =>{
     try {
-        const { data } = await axios.post(`${path}/sentence/`,
+        const { data } = await axios.put(`${path}/account/${id}/`,
             {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                sentenceData: JSON.stringify(sentnce)
+                userData: JSON.stringify(userData)
             },);   
             return data     
     
     }
     catch (err) {
-        console.log("Cant Find Sentences!")
+        console.log("User Didnt Updated!")
     }
 
 }
-export default AddSentence;
+export default UpdateUser;

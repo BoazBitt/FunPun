@@ -1,4 +1,10 @@
 .contain{
     margin-top: 72px;
     height: calc(100vh - 144px);
+    .done{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 }

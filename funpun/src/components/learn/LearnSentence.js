@@ -11,16 +11,16 @@ const Game = props => {
     <div className={classes.game}>
       <div className={classes.sentence_results}>
         <div className={classes.sentence}>
-          {sentence.split(" ").map((w) => {
+          {sentence.split(" ").map((w,index) => {
 
           if (w === Hword || w === translation) {
             return (
-            <span className={clicked ? classes.word : ' '}>  {w + "  "}
+            <span key={index} className={clicked ? classes.word : ' '}>  {w + "  "}
             </span>
             )
           }
           return(
-          <span> 
+          <span key={index}> 
           {" " + w}
           </span>
           )

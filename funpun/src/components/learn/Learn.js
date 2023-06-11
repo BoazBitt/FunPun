@@ -5,16 +5,13 @@ import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { changeSentence } from "../../functions/changeSentce";
 import DUMMY_SENTENCES from "../../Data/DUMMY_SENTENCES";
-// import S1 from '../../Data/sentences'
-// import board3 from '../assets/images/board3.png'
-// import board4 from "../assets/images/board4.png";
-// import back from '../assets/images/back.jpg'
 
-const allgames = ['Hanged'];
+
+const allgames = ['CardGame','Jumble','Whack' ,'WordSearch','Hanged'];
 const NUMOFGAMES = allgames.length;
 
 //'CardGame','Jumble','Whack' ,'WordSearch','Hanged'
-
+ 
 const Learn = () => {
   const navigation = useNavigate();
   const { state } = useLocation()

@@ -82,25 +82,28 @@ const SchoolModal = () => {
   }
 
   useEffect(() => {
-    if (formData) {
-      if (state) {
-        TeacherSignUp(formData).then((data) => {
-          console.log(data)
-          setLoader(prev => !prev)
-          dispatch(modalActions.closeModal())
-        })
+    const sendData = async () =>{
+      if (formData) {
+        if (state) {
 
-      }
-      else {
-        TeacherLogin(formData).then((data) => {
-          console.log(data)
+          TeacherSignUp(formData).then((data) => {
+            console.log(data)
+            setLoader(prev => !prev)
+            dispatch(modalActions.closeModal())
+          })
+  
+        }
+        else {
+          const teacher = await TeacherLogin(formData);
+          console.log(teacher)
           setLoader(prev => !prev)
-          dispatch(authActions.login(data))
+          dispatch(authActions.login(teacher))
           dispatch(modalActions.closeModal())
-        })
-
+        }
       }
     }
+    sendData()
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData])
 

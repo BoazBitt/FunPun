@@ -8,7 +8,7 @@ import classes from './SpeechRecognize.module.scss'
 const SpeechRecognize = props => {
     const navigation = useNavigate();
     const { sentences } = props
-    const [next, setNext] = useState(2);
+    const [next, setNext] = useState(0);
     const [proceed, setProceed] = useState(false)
     const [listening, setListening] = useState(false);
     const [showImage, setShowImage] = useState(false);
@@ -58,8 +58,6 @@ const SpeechRecognize = props => {
         if (next === sentences.length - 2) {
             setNext(0)
             navigation('/')
-
-
         }
         else {
             setNext(prev => prev + 2)
@@ -74,9 +72,15 @@ const SpeechRecognize = props => {
 
     return (
         <div className={classes.container}>
-            <div className={classes.instrutions}>
-                : "איך אומרים באנגלית את המילה "{sentences[next + 1].content}
+            {/* <div className={classes.instrutions}>
+                <h1>
+                    : "איך אומרים באנגלית את המילה "{[next + 1].content}
+                </h1>
 
+            </div> */}
+
+            <div className={classes.instructions}>
+                <h1>מה התרגום של המילה {' '}<span>{sentences[next + 1].content}</span> באנגלית</h1>
             </div>
             {/* <div>
                 <audio controls>
@@ -97,7 +101,7 @@ const SpeechRecognize = props => {
             </div>
             {proceed ? <div className={classes.proceed}><button onClick={proceedHandler} >המשך</button></div>
                 : <div className={classes.reset}>
-                    {transcript && <button onClick={resetTranscript}>Rest</button>}
+                    {transcript && <button onClick={resetTranscript}>אפס</button>}
                 </div>}
 
         </div>

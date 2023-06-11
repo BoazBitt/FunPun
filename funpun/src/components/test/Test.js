@@ -37,29 +37,16 @@ const Test = () => {
 
 
 
-
-    const calculateUserLevel = score => {
-        let userLevel, userUnit;
-
-        if (score === 0) {
-            userLevel = 1;
-            userUnit = 1;
-        } else if (score === 100) {
-            userLevel = Math.floor(totalUnits * 0.7 / 10);
-            userUnit = 1;
-        } else {
-            const levelPercentage = (score / 100) * 0.6;  // calculate the percentage of the highest possible level
-            userLevel = Math.floor(totalUnits * levelPercentage / 10) + 1;  // calculate the user level based on the percentage
-            userUnit = Math.floor((totalUnits * levelPercentage % 10) + 1);  // calculate the user unit based on the remainder
-        }
+    const calculateUserLevel = (score) => {
+        const totalLevels = Math.ceil(totalUnits / 5);  
+        const levelPercentage = score / 100;  
+        const userLevel = Math.floor(totalLevels * levelPercentage);
+      
+        return userLevel;
+      };
 
 
-        return [userLevel, userUnit];
-
-    }
-
-
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         let score = 0;
         const lastKey = Object.keys(answers).slice(-1)[0];
@@ -75,29 +62,22 @@ const Test = () => {
             }
         )
 
-        // const { userLevel, userUnit } = calculateUserLevel(score)
-        const dataToSignUp = { ...signupData}
+        const userLevel = calculateUserLevel(score)
+        const dataToSignUp = { ...signupData,userLevel:userLevel}
         signUpUser(dataToSignUp).then((data) => {
             console.log(data)
             navigation('/')
 
         })
 
-        // const GPTEval = EvalueateTest(answers.q11).then((data) => {
-        //     console.log(data)
-        //     const c = data.split("/")[0]
-        //     console.log(c)
-        //     console.log(typeof (c))
-        //     score += parseInt(c) * 2
-        //     console.log(score)
-        //     const finalScore = Math.floor(score / 1.2)
-        //     console.log(finalScore)
-        //     const { userLevel, userUnit } = calculateUserLevel(finalScore)
+        // const GPTEval = await EvalueateTest(answers.q11)
+        // const GPTscore = GPTEval.split("/")[0]
+        // score += parseInt(GPTscore) * 2
+        // const finalScore = Math.floor(score / 1.2)
+        // const dataToSignUp = { ...signupData,userLevel:userLevel}
+        // signUpUser(dataToSignUp).then((data) => {
+        //     navigation('/')
 
-        //     const dataToSignUp = { ...signupData, userLevel: userLevel, userUnit: userUnit }
-        //     signUpUser(dataToSignUp).then((data) => {
-        //         console.log(data)
-        //     })
         // })
     };
 

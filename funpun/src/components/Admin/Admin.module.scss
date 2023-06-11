@@ -2,7 +2,6 @@
 
 .Admin {
     margin-top: 72px;
-    border: 2px solid red;
     height: calc(100vh - 144px);
 
     .head {
@@ -36,6 +35,23 @@
         span:hover {
             width: 180px;
             background: green;
+        }
+
+    }
+    .inputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 20px;
+        input {
+            width: 30%;
+            padding-left: 10px;
+            height: 40px;
+            border-radius: 8px;
+            color: black;
+
         }
 
     }

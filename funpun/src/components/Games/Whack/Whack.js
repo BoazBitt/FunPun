@@ -5,14 +5,23 @@ import Container from "../../container/Container";
 import { useLocation, useNavigate } from "react-router-dom";
 import DUMMY from "../../../Data/DUMMY_WORDS";
 import mole from "../../assets/images/mole.png";
+import updateScore from '../../../functions/updateScore';
+import { useDispatch, useSelector } from "react-redux";
+import Confetti from 'react-confetti'
+
 
 const Whack = () => {
-  const navigation = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector(state => state.auth.user)
+  const token = useSelector(state => state.auth.Token)
+
   const { state } = useLocation();
   const initialState = state ? state.sentences : DUMMY;
   const [next, setNext] = useState(0);
   const [score, setScore] = useState(0);
   const [start, setStart] = useState(false);
+  const [confetti, setConfetti] = useState(false);
 
   const [divs, setDivs] = useState([
     { id: 1, content: "" },
@@ -54,13 +63,16 @@ const Whack = () => {
     }
   }, [randomDivIndex]);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (divs[randomDivIndex].content === initialState[next].content) {
       setScore((prev) => prev + 20);
       if (next === initialState.length - 2) {
-        setNext(0);
+        setConfetti(prev=>!prev)
+        setRandomDivIndex(100)
         //update user's score!
-        navigation("/");
+        const response = await updateScore(user.user, { game: 'Whack', type: score }, dispatch, token)
+        setNext(0);
+        if (response === 200) navigate('/')
       } else {
         setNext((prev) => prev + 2);
       }
@@ -80,7 +92,9 @@ const Whack = () => {
       {start && (
         <div className={classes.whack}>
           <h1 id={classes.title}>Whack The Mole</h1>
-          <div className={classes.data}>
+          {!confetti?
+          <>
+                    <div className={classes.data}>
             <div className={classes.score}>התוצאה שלך: {score}</div>
             <div className={classes.instructions}>
               <h1>מה התרגום של המילה {' '}<span>{initialState[next + 1].content}</span> באנגלית</h1>
@@ -104,7 +118,8 @@ const Whack = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div></>:<Confetti/>}
+
         </div>
       )}
       {!start && (

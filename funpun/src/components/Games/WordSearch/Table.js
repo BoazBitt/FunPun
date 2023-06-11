@@ -2,12 +2,19 @@ import React, { useEffect, useState } from 'react'
 import classes from './Table.module.scss'
 import Confetti from 'react-confetti'
 import { useNavigate } from "react-router-dom";
+import updateScore from '../../../functions/updateScore';
+import { useDispatch, useSelector } from "react-redux";
+
 
 
 
 const Table = props => {
-    const { matrix, longestLength, hebrewwords, englishwords } = props
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const user = useSelector(state => state.auth.user)
+    const token = useSelector(state => state.auth.Token)
+
+    const { matrix, longestLength, hebrewwords, englishwords } = props
 
     const [cell, setCell] = useState([])
     const [solved, setSolved] = useState([])
@@ -58,15 +65,19 @@ const Table = props => {
     }
 
     useEffect(() => {
-        if (hebBank.length === hebrewwords.length) {
-            setConfetti(prev => !prev)
-            setTimeout(() => {
-                //update user's score!
-                navigate('/')
-
-            }, 5000);
+        const update = async () =>{
+            if (hebBank.length === hebrewwords.length) {
+                setConfetti(prev => !prev)
+                setTimeout(async () => {
+                    //update user's score!
+                    const response = await updateScore(user.user,{game:'Search',type:0},dispatch,token)
+                    if (response===200) navigate('/')
+    
+                }, 3000);
+            }
         }
-    }, [hebBank, hebrewwords, navigate])
+        update()
+    }, [dispatch, hebBank, hebrewwords, navigate, token, user.user])
 
 
     const foundBank = (word) => hebBank.includes(word);

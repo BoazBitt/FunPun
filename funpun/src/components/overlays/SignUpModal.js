@@ -2,7 +2,7 @@
 import React from 'react'
 import classes from './overlay.module.scss'
 import { useState, useEffect } from 'react';
-import signUpUser from '../../functions/signUpUser'
+// import signUpUser from '../../functions/signUpUser'
 import { useNavigate } from 'react-router-dom';
 import { modalActions } from '../../store/modalSlicer';
 import ModalContent from './ModalContent';
@@ -32,8 +32,7 @@ const SignUpModal = props => {
   })
   const type = useSelector(state => state.modal.modalType)
   const [signupData, setSignUpData] = useState(null)
-  const [inputValue, setInputValue] = useState("");
-  const filteredCities = Cities.filter(city => city.toLowerCase().startsWith(inputValue.toLowerCase()));
+  const filteredCities = Cities.filter(city => city.startsWith(formData.city));
 
 
 
@@ -55,13 +54,6 @@ const SignUpModal = props => {
     if (signupData) {
       dispatch(modalActions.closeModal())
       navigation('/Test', { state: { signupData: signupData } })
-
-
-      // signUpUser(signupData).then((data) => {
-      //   console.log(data)
-      // })
-
-
     }
   }, [signupData, navigation, dispatch])
 

@@ -46,7 +46,7 @@ const Cards = (props) => {
     for (let i = 0; i < 10; i++) {
       if (items[i].stat === "correct") c++;
     }
-    if (c === 10) { setItems(props.sentences); setStart(false); setTurns(0); props.handleGameOver(); }
+    if (c === 10) { setItems(props.sentences); setStart(false); setTurns(0); props.handleGameOver(turns); }
   }, [items, props, turns, start]);
 
   return (
