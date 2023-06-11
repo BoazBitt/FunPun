@@ -30,12 +30,12 @@ class AccountViewSet(viewsets.ModelViewSet):
         city = request.query_params.get('city')
         userid = request.query_params.get('id')
         accounts = Account.objects.filter(userLevel=level, city=city).exclude(user_id=userid)
-        serializer = self.get_serializer(accounts,many=True)
+        serializer = self.get_serializer(accounts, many=True)
         return Response(serializer.data)
 
     def update(self, request, *args, **kwargs):
-        if request.data['userData']:
-            user = User.objects.get(id=kwargs['pk'])
+        user = User.objects.get(id=kwargs['pk'])
+        if 'userData' in request.data:
             acc = Account.objects.get(user=user)
             data = json.loads(request.data['userData'])
             account_keys = ['first_name', 'last_name', 'city']
@@ -55,5 +55,12 @@ class AccountViewSet(viewsets.ModelViewSet):
             serializer = self.get_serializer(acc, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)
             self.perform_update(serializer)
-
-            return Response(serializer.data)
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        if 'points' in request.data:
+            acc = Account.objects.get(user=user)
+            acc.points = acc.points + request.data['points']
+            acc.userLevel += 1
+            acc.save()
+            serializer = self.get_serializer(acc, data=request.data, partial=True)
+            serializer.is_valid(raise_exception=True)
+            return Response(serializer.data,status=status.HTTP_200_OK)
