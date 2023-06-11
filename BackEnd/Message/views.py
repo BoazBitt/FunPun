@@ -14,17 +14,33 @@ from .serializers import MessageSerializer
 class MessageViewSet(viewsets.ModelViewSet):
     queryset = Message.objects.all()
     print(queryset)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 931aed9fffbcd4d59b0a9d0ea0ea6d972bd87054
     serializer_class = MessageSerializer
 
     # permission_classes = (IsAuthenticated,)
 
     def create(self, request, *args, **kwargs):
+<<<<<<< HEAD
         data = json.loads(request.data.get('msgData'))
         serializer = self.get_serializer(data=data)
         if not serializer.is_valid():
             return HttpResponseBadRequest("Bad Request")
         serializer.save(sent_at=timezone.now())
 
+=======
+        print("in cretae")
+        print(request)
+        print(request.data.get('msgData'))
+        data = json.loads(request.data.get('msgData'))
+        serializer = self.get_serializer(data=data)
+        if not serializer.is_valid():
+            print(serializer.errors)
+            return HttpResponseBadRequest("Bad Request")
+        serializer.save(sent_at=timezone.now())
+>>>>>>> 931aed9fffbcd4d59b0a9d0ea0ea6d972bd87054
         return Response('Posted Successfully', status=status.HTTP_201_CREATED)
 
     def list(self, request, *args, **kwargs):
@@ -35,5 +51,8 @@ class MessageViewSet(viewsets.ModelViewSet):
         ).order_by('sent_at')
         serializer = self.get_serializer(messages, many=True)
         return Response(serializer.data)
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 931aed9fffbcd4d59b0a9d0ea0ea6d972bd87054

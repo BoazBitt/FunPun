@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.authtoken.admin import User
@@ -53,7 +55,11 @@ class AccountViewSet(viewsets.ModelViewSet):
             serializer = self.get_serializer(acc, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)
             self.perform_update(serializer)
+<<<<<<< HEAD
             return Response(serializer.data, status=status.HTTP_200_OK)
+=======
+            return Response(serializer.data,status=status.HTTP_200_OK)
+>>>>>>> 931aed9fffbcd4d59b0a9d0ea0ea6d972bd87054
         if 'points' in request.data:
             acc = Account.objects.get(user=user)
             acc.points = acc.points + request.data['points']
@@ -61,4 +67,8 @@ class AccountViewSet(viewsets.ModelViewSet):
             acc.save()
             serializer = self.get_serializer(acc, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)
+<<<<<<< HEAD
             return Response(serializer.data, status=status.HTTP_200_OK)
+=======
+            return Response(serializer.data,status=status.HTTP_200_OK)
+>>>>>>> 931aed9fffbcd4d59b0a9d0ea0ea6d972bd87054

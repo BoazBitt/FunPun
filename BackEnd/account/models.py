@@ -17,15 +17,5 @@ class Account(models.Model):
 
     city = models.CharField(validators=[MinLengthValidator(2)], max_length=50, blank=False)
 
-    # is_teacher = models.BooleanField(default=False)
-
     def __str__(self):
         return self.user.username
-
-
-
-
-# class Teacher(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     students = models.ForeignKey(User)
-#     school = models.CharField(validators=[MinLengthValidator(2)], max_length=50, blank=False)

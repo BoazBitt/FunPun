@@ -15,12 +15,12 @@ const Home = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state.auth.isAuthenticated)
   const user = useSelector(state => state.auth.user)
-  const userFullName = user? user.first_name + " " + user.last_name:null
-  const userLevel = user? user.userLevel:null
-  const superuser = user? user.is_superuser:false
-  const school = user? user.school_name:null
+  const userFullName = user ? user.first_name + " " + user.last_name : null
+  const userLevel = user ? user.userLevel : null
+  const superuser = user ? user.is_superuser : false
+  const school = user ? user.school_name : null
 
-  
+
 
   return (
     <>
@@ -49,15 +49,20 @@ const Home = () => {
 
               <span onClick={() => { dispatch(modalActions.openModal({ modalType: 'School', modalArgs: null })) }}>כניסת מורים</span>
             </div></>}
-    
+
           {isLogin && superuser ? <>
             <h1>Hello Admin</h1>
             <Link to={'/Admin'} className={classes.continue} style={{ textDecoration: 'none' }}>Admin Page</Link>
           </> :
-            <> 
+            <>
               {isLogin && <h1>{userFullName} שלום </h1>}
               {isLogin && userLevel && <h1> רמתך הנוכחית היא {userLevel}</h1>}
-              {isLogin && userLevel && <Link to={'/Learn'} className={classes.continue} style={{ textDecoration: 'none' }}>המשך ללמוד</Link>}
+              {isLogin && userLevel && <>
+                <Link to={'/Learn'} className={classes.continue} style={{ textDecoration: 'none' }}>המשך ללמוד</Link>
+                <Link to={'/Account'} className={classes.continue} style={{ textDecoration: 'none' }}>איזור אישי</Link>
+
+                </>}
+
               {isLogin && school && <Link to={'/Teacher'} className={classes.continue} style={{ textDecoration: 'none' }}>דף מורה</Link>}
             </>}
 
