@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react'
 import classes from './HangedGame.module.scss'
 import Figure from './Figure'
 import { useNavigate } from "react-router-dom";
-<<<<<<< Updated upstream
-=======
-import Confetti from 'react-confetti'
+// import Confetti from 'react-confetti'
 import updateScore from '../../../functions/updateScore';
 import { useDispatch, useSelector } from "react-redux";
->>>>>>> Stashed changes
 
 
 const HangedGame = props => {
@@ -47,21 +44,12 @@ const HangedGame = props => {
         }
         setLetter('')
     }
-<<<<<<< Updated upstream
-    const procced = () => {
-        if (next === englishwords.length-1 ) {
-            setNext(0)
-            //update user's score!
-            navigation("/");
-            
-=======
     const procced = async () => {
         if (next === englishwords.length - 1) {
             setNext(0)
             //update user's score!
             const response = await updateScore(user.user,{game:'Hanged',type:wrongLetters},dispatch,token)
             if (response===200) navigate('/')
->>>>>>> Stashed changes
             return
             
         }

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.authtoken.admin import User
 from rest_framework.response import Response
 from .models import Account
@@ -22,7 +22,6 @@ class AccountViewSet(viewsets.ModelViewSet):
         acc = Account.objects.get(user=user)
         serializer = self.get_serializer(acc)
         return Response(serializer.data)
-
 
     def list(self, request, *args, **kwargs):
         level = request.query_params.get('userLevel')
@@ -54,7 +53,7 @@ class AccountViewSet(viewsets.ModelViewSet):
             serializer = self.get_serializer(acc, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)
             self.perform_update(serializer)
-            return Response(serializer.data,status=status.HTTP_200_OK)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         if 'points' in request.data:
             acc = Account.objects.get(user=user)
             acc.points = acc.points + request.data['points']
@@ -62,4 +61,4 @@ class AccountViewSet(viewsets.ModelViewSet):
             acc.save()
             serializer = self.get_serializer(acc, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)
-            return Response(serializer.data,status=status.HTTP_200_OK)
+            return Response(serializer.data, status=status.HTTP_200_OK)
