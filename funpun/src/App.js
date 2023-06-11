@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import { useLayoutEffect, Profiler } from "react";
 
+
+
 import Footer from "./components/footer/Footer";
 import Home from "./components/Home/Home";
 import Learn from "./components/learn/Learn";
@@ -21,6 +23,7 @@ import Test from "./components/test/Test";
 import Speech2Text from "./components/speach/Speech2Text";
 import Admin from "./components/Admin/Admin";
 import Teacher from "./components/teacher/Teacher";
+import Account from './components/accountPage/AccountPage'
 import StudentLearn from "./components/students/StudentLearn";
 // import Container from "./components/container/Container";
 
@@ -66,6 +69,7 @@ const App = () => {
               <Route path="/Admin" element={<Admin />} />
               <Route path="/Teacher" element={<Teacher />} />
               <Route path="/Student" element={<StudentLearn />} />
+              <Route path="/Account" element={<Account />} />
               <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />

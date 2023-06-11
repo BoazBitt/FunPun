@@ -15,6 +15,7 @@ const authSlice = createSlice(
         initialState,
         reducers: {
             login(state, action) {
+                console.log("in func" ,action.payload.user)
                 state.isAuthenticated = true;
                 state.Token = action.payload.token;
                 state.user = action.payload.user;
@@ -25,6 +26,12 @@ const authSlice = createSlice(
             logout(state) {
 
                 return initialState;
+            },
+            setUser(state,action){
+                state.user = action.payload;
+                if (action.payload.user.points) {
+                    state.points = action.payload.user.points;             
+                }
             },
 
             setSentences(state, action) {
