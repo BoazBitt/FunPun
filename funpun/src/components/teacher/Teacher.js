@@ -11,6 +11,7 @@ import { AiFillCopy } from 'react-icons/ai';
 import { FcPlus } from 'react-icons/fc'
 import { BsTrash3 } from 'react-icons/bs'
 import deleteClassroom from '../../functions/deleteClassroom'
+import { FcCheckmark, FcCancel } from 'react-icons/fc'
 
 
 const Teacher = () => {
@@ -119,9 +120,13 @@ const Teacher = () => {
           <div style={classrooms.length > 5 ? { overflowY: "scroll", height: "330px" } : null}
             className={classes.classroomContianer}>
             {classrooms && <>
+
               {
+
                 classrooms.map((myclass, index) => (
                   <>
+
+
                     <div
                       key={index}
                       className={`${classes.classroom} ${index === activeIndex ? classes.activeClassroom : ''}`}
@@ -144,7 +149,7 @@ const Teacher = () => {
                       {myclass.students.map((student) =>
                         <div className={classes.studentInfo}>
                           <div className={classes.student_name}>{student.fullName}</div>
-                          <div className={classes.student_done}>{student.done ? 'Done' : 'Not Done'}</div>
+                          <div className={classes.student_done}>{student.done ? <FcCheckmark size={20} /> : <FcCancel size={20} />}</div>
 
                         </div>
                       )}
@@ -164,14 +169,14 @@ const Teacher = () => {
           <>
             <div className={classes.classInfo}>
               <input onChange={(e) => { onchangeHnadler(e, 'classID') }} style={{ color: 'black' }} placeholder="Class's Name" />
-              <select onChange={(e) => { onchangeHnadler(e, 'capacity') }} style={{ color: 'black' }} defaultValue="Choose">
-                <option disabled>Choose</option>
+              <select onChange={(e) => { onchangeHnadler(e, 'capacity') }} style={{ color: 'black' }} defaultValue="Capacity">
+                <option disabled>Capacity</option>
                 {Array.from({ length: 30 }, (_, index) => (
                   <option style={{ color: 'black', fontSize: 'small' }} key={index + 1} value={index + 1}>{index + 1}</option>
                 ))}
               </select>
-              <select onChange={(e) => { onchangeHnadler(e, 'classLevel') }} style={{ color: 'black' }} defaultValue="Choose">
-                <option disabled>Choose</option>
+              <select onChange={(e) => { onchangeHnadler(e, 'classLevel') }} style={{ color: 'black' }} defaultValue="Level">
+                <option disabled>Level</option>
                 {Array.from({ length: 30 }, (_, index) => (
                   <option style={{ color: 'black', fontSize: 'small' }} key={index + 1} value={index + 1}>{index + 1}</option>
                 ))}

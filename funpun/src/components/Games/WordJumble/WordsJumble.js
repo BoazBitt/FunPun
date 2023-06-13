@@ -9,11 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 const WordJumle = props => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isLogin = useSelector(state => state.auth.isAuthenticated)
   const user = useSelector(state => state.auth.user)
   const token = useSelector(state => state.auth.Token)
   const { state } = useLocation();
-  const navigate = useNavigate();
   const initialState = state ? state.sentences : DUMMY;
 
 
@@ -35,8 +36,16 @@ const WordJumle = props => {
     if (next === words.length - 2) {
       const update = async () => {
         //update user's score!
-        const response = await updateScore(user.user, { game: 'Jumble', type: totalTime }, dispatch, token)
-        if (response === 200) navigate('/')
+        if (isLogin) {
+          const response = await updateScore(user.user, { game: 'Jumble', type: totalTime }, dispatch, token)
+          if (response === 200) navigate('/')
+
+        }
+        else {
+          navigate('/')
+
+        }
+
       }
       update()
 

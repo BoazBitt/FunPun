@@ -11,11 +11,10 @@ import { useDispatch, useSelector } from "react-redux";
 const Table = props => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const isLogin = useSelector(state => state.auth.isAuthenticated)
     const user = useSelector(state => state.auth.user)
     const token = useSelector(state => state.auth.Token)
-
     const { matrix, longestLength, hebrewwords, englishwords } = props
-
     const [cell, setCell] = useState([])
     const [solved, setSolved] = useState([])
     const [hebBank, sethebBank] = useState([])
@@ -65,18 +64,24 @@ const Table = props => {
     }
 
     useEffect(() => {
-        const update = async () =>{
+        const update = async () => {
             if (hebBank.length === hebrewwords.length) {
                 setConfetti(prev => !prev)
                 setTimeout(async () => {
                     //update user's score!
-                    const response = await updateScore(user.user,{game:'Search',type:0},dispatch,token)
-                    if (response===200) navigate('/')
-    
+                    if (isLogin) {
+                        const response = await updateScore(user.user, { game: 'Search', type: 0 }, dispatch, token)
+                        if (response === 200) navigate('/')
+                    }
+                    else {
+                        navigate('/')
+
+                    }
                 }, 3000);
             }
         }
         update()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, hebBank, hebrewwords, navigate, token, user.user])
 
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { path } from './path'
+import { toast } from "react-toastify";
 
 
 const postAMessage = async (msgData) => {
@@ -13,11 +14,14 @@ const postAMessage = async (msgData) => {
                 },
                 msgData: JSON.stringify(msgData)
             },);   
+            toast.success('ההודעה פורסמה')
+
             return data     
     
     }
     catch (err) {
-        console.log("Invalid Shit!")
+        toast.error('קרתה שגיאה אנא נסה שוב')
+
     }
 
 

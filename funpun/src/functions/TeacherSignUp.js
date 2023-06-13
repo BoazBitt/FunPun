@@ -1,6 +1,6 @@
 import axios from "axios";
 import { path } from './path'
-
+import { toast } from "react-toastify";
 
 const getSentences = async (signupData) => {
     console.log("in func!",signupData)
@@ -13,11 +13,13 @@ const getSentences = async (signupData) => {
                 },
                 teacherData: JSON.stringify(signupData)
             },);   
+            toast.success("החשבון נוצר בהצלחה");
+
             return data     
     
     }
     catch (err) {
-        console.log("Invalid Shit!")
+        toast.error('קרתה שגיאה אנא נסה שוב')
     }
 
 

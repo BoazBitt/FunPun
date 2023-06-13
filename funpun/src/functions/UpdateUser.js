@@ -1,5 +1,6 @@
 import axios from "axios";
 import { path } from './path'
+import { toast } from "react-toastify";
 
 
 
@@ -12,11 +13,13 @@ const UpdateUser = async (id,userData) =>{
                 },
                 userData: JSON.stringify(userData)
             },);   
+            toast.success('המידע התעדכן בהצלחה')
+
             return data     
     
     }
     catch (err) {
-        console.log("User Didnt Updated!")
+        toast.error('קרתה שגיאה אנא נסה שוב')
     }
 
 }

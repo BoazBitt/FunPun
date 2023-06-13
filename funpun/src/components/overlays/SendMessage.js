@@ -15,8 +15,6 @@ const SendMessage = () => {
     // const type = useSelector(state => state.modal.modalType)
     const sender = useSelector(state => state.auth.user.user)
     const receiver = useSelector(state => state.modal.modalArgs)
-    console.log('sender', sender)
-    console.log('receiver', receiver)
     const [loader, setLoader] = useState(false)
     const [loader2, setLoader2] = useState(true)
     const [message, setMessage] = useState('')
@@ -31,17 +29,18 @@ const SendMessage = () => {
             setLoader2(prev => !prev)
         }
         fetch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const sendMessage = async () => {
-
+        console.log('1')
         if (!message.length) return;
-        console.log(message);
+        console.log('1')
         setLoader(prev => !prev)
         const post = await postAMessage({ sender: sender, receiver: receiver, content: message });
         console.log(post);
         setLoader(prev => !prev)
+        console.log('1')
         setMessage('')
         const updatesMsgs = await getAllMessages(sender, receiver);
         setAllMessages(updatesMsgs);
@@ -78,15 +77,11 @@ const SendMessage = () => {
                             value={message}
                             onKeyDown={keyDownHandler}
                             onChange={(e) => { setMessage(e.target.value) }} />
-                        <div className={classes.icon} 
+                        <div className={classes.icon}
                             onClick={sendMessage}
-                            >
+                        >
                             <IoIosSend size={30} color="yellowgreen" className="custom-icon" />
-                            {/* <IoIosSend size={30}
-                                style={{ color: '#000000', transition: 'color 0.3s ease' }}
-                                onMouseEnter={(e) => e.target.style.color = '#ff0000'}
-                                onMouseLeave={(e) => e.target.style.color = '#ADD8E6'}
-                            /> */}
+
                         </div>
                     </div>
                 </div>

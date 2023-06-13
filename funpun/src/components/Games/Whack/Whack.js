@@ -13,9 +13,9 @@ import Confetti from 'react-confetti'
 const Whack = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isLogin = useSelector(state => state.auth.isAuthenticated)
   const user = useSelector(state => state.auth.user)
   const token = useSelector(state => state.auth.Token)
-
   const { state } = useLocation();
   const initialState = state ? state.sentences : DUMMY;
   const [next, setNext] = useState(0);
@@ -67,12 +67,17 @@ const Whack = () => {
     if (divs[randomDivIndex].content === initialState[next].content) {
       setScore((prev) => prev + 20);
       if (next === initialState.length - 2) {
-        setConfetti(prev=>!prev)
+        setConfetti(prev => !prev)
         setRandomDivIndex(100)
         //update user's score!
-        const response = await updateScore(user.user, { game: 'Whack', type: score }, dispatch, token)
         setNext(0);
-        if (response === 200) navigate('/')
+        if (isLogin) {
+          const response = await updateScore(user.user, { game: 'Whack', type: score }, dispatch, token)
+          if (response === 200) navigate('/')
+        }
+        else {
+          navigate('/')
+        }
       } else {
         setNext((prev) => prev + 2);
       }
@@ -92,33 +97,33 @@ const Whack = () => {
       {start && (
         <div className={classes.whack}>
           <h1 id={classes.title}>Whack The Mole</h1>
-          {!confetti?
-          <>
-                    <div className={classes.data}>
-            <div className={classes.score}>התוצאה שלך: {score}</div>
-            <div className={classes.instructions}>
-              <h1>מה התרגום של המילה {' '}<span>{initialState[next + 1].content}</span> באנגלית</h1>
-            </div>
-          </div>
-
-          <div className={classes.board}>
-            <div className={classes.holes}>
-              {divs.map((div, index) => (
-                <div
-                  className={classes.hole}
-                  key={div.id}
-                  onClick={index === randomDivIndex ? handleClick : null}
-                >
-                  {index === randomDivIndex && (
-                    <div className={classes.mole}>
-                      <span>{div.content}</span>
-                      <img src={mole} alt="mole" />
-                    </div>
-                  )}
+          {!confetti ?
+            <>
+              <div className={classes.data}>
+                <div className={classes.score}>התוצאה שלך: {score}</div>
+                <div className={classes.instructions}>
+                  <h1>מה התרגום של המילה {' '}<span>{initialState[next + 1].content}</span> באנגלית</h1>
                 </div>
-              ))}
-            </div>
-          </div></>:<Confetti/>}
+              </div>
+
+              <div className={classes.board}>
+                <div className={classes.holes}>
+                  {divs.map((div, index) => (
+                    <div
+                      className={classes.hole}
+                      key={div.id}
+                      onClick={index === randomDivIndex ? handleClick : null}
+                    >
+                      {index === randomDivIndex && (
+                        <div className={classes.mole}>
+                          <span>{div.content}</span>
+                          <img src={mole} alt="mole" />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div></> : <Confetti />}
 
         </div>
       )}

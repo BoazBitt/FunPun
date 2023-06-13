@@ -1,5 +1,6 @@
 import axios from "axios";
 import { path } from './path'
+import { toast } from "react-toastify";
 
 const deleteClassroom = async (ClassroomData) => {
     console.log("in func!",ClassroomData)
@@ -11,11 +12,14 @@ const deleteClassroom = async (ClassroomData) => {
                     'Content-Type': 'application/json'
                 },
             },);   
+            toast.success('הכיתה נמחקה בהצלחה')
+
             return data     
     
     }
     catch (err) {
-        console.log("Invalid Shit!")
+        toast.error('קרתה שגיאה אנא נסה שוב')
+
     }
 
 

@@ -11,6 +11,7 @@ import { modalActions } from "../../store/modalSlicer"
 import { useDispatch } from "react-redux";
 
 
+
 const Home = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state.auth.isAuthenticated)
@@ -18,9 +19,7 @@ const Home = () => {
   const userFullName = user ? user.first_name + " " + user.last_name : null
   const userLevel = user ? user.userLevel : null
   const superuser = user ? user.is_superuser : false
-  const school = user ? user.school_name : null
-
-
+  const school = user ? user.school_name : null;
 
   return (
     <>

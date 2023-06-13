@@ -1,13 +1,9 @@
 import axios from "axios";
 import { path } from './path'
+import { toast } from "react-toastify";
 
 const signUpUser = async (signUpData) => {
-    console.log("in function")
-    console.log(signUpData)
-    console.log(JSON.stringify(signUpData));
     const jsonfile = JSON.stringify(signUpData);
-    console.log(jsonfile)
-    
     try {
         const { data } = await axios.post(`${path}/signup`,
             {
@@ -18,11 +14,12 @@ const signUpUser = async (signUpData) => {
        
 
             },);
-        alert("Account Created")
+            
+        toast.success("החשבון נוצר בהצלחה");
         return { data }
     }
     catch (err) {
-        alert(err)
+        toast.error('קרתה שגיאה אנא נסה שוב')
     }
 
 

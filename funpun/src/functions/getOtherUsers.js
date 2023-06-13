@@ -15,11 +15,11 @@ const getOtherUsers = async (user) => {
                     id:user.user
                   }
             },);   
+
             return data     
     
     }
     catch (err) {
-        console.log("Cant find other users!")
     }
 
 //Cant Find Sentences!

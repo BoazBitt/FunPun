@@ -1,5 +1,6 @@
 import axios from "axios";
 import { path } from './path'
+import { toast } from "react-toastify";
 
 const TeacherLogin = async (loginData) => {
     console.log("in Login:",loginData)
@@ -23,10 +24,12 @@ const TeacherLogin = async (loginData) => {
             },
         },);
         const user = response.data
+        toast.success('התחברת בהצלחה')
+
         return { token: token, user: user };
     }
     catch (err) {
-        console.log("Invalid UserName or Password")
+        toast.error('קרתה שגיאה אנא נסה שוב')
     }
 
 

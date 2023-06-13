@@ -8,8 +8,8 @@ import {
 } from "react-router-dom";
 import { useLayoutEffect, Profiler } from "react";
 
-
-
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import Footer from "./components/footer/Footer";
 import Home from "./components/Home/Home";
 import Learn from "./components/learn/Learn";
@@ -57,22 +57,34 @@ const App = () => {
         <Router>
           <Wrapper>
             <Navbar />
+            <ToastContainer
+              position="top-center"
+              autoClose={4000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="black"
+            />
           </Wrapper>
           <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/Learn" element={<Learn />} />
-              <Route path="/Test" element={<Test />} />
-              <Route path="/Jumble" element={<Jumble />} />
-              <Route path="/VerbalTest" element={<Speech2Text />} />
-              <Route path="/Whack" element={<Whack />} />
-              <Route path="/CardGame" element={<Board />} />
-              <Route path="/WordSearch" element={<WordSearch />} />
-              <Route path="/Hanged" element={<HangedMan/>} />
-              <Route path="/Admin" element={<Admin />} />
-              <Route path="/Teacher" element={<Teacher />} />
-              <Route path="/Student" element={<StudentLearn />} />
-              <Route path="/Account" element={<Account />} />
-              <Route path="*" element={<Navigate to="/" />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/Learn" element={<Learn />} />
+            <Route path="/Test" element={<Test />} />
+            <Route path="/Jumble" element={<Jumble />} />
+            <Route path="/VerbalTest" element={<Speech2Text />} />
+            <Route path="/Whack" element={<Whack />} />
+            <Route path="/CardGame" element={<Board />} />
+            <Route path="/WordSearch" element={<WordSearch />} />
+            <Route path="/Hanged" element={<HangedMan />} />
+            <Route path="/Admin" element={<Admin />} />
+            <Route path="/Teacher" element={<Teacher />} />
+            <Route path="/Student" element={<StudentLearn />} />
+            <Route path="/Account" element={<Account />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />
         </Router>

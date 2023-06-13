@@ -1,5 +1,6 @@
 import axios from "axios";
 import { path } from './path'
+import { toast } from "react-toastify";
 
 
 const createClassroom = async (ClassroomData) => {
@@ -13,11 +14,15 @@ const createClassroom = async (ClassroomData) => {
                 },
                 classData: JSON.stringify(ClassroomData)
             },);   
-            return data     
+            toast.success('הכיתה התווספה בהצלחה')
+
+            return data   
+              
     
     }
     catch (err) {
-        console.log("Invalid Shit!")
+        toast.error('קרתה שגיאה אנא נסה שוב')
+
     }
 
 

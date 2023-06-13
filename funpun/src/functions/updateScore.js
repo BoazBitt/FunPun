@@ -2,6 +2,10 @@ import axios from "axios";
 import { path } from './path'
 import { authActions } from "../store/authSlicer";
 import getSentences from './getSentences'
+import { toast } from "react-toastify";
+
+
+
 const turnsCalc = turns => {
     const maxPoints = 50;
     const minimumTurns = 5;
@@ -88,6 +92,8 @@ const updateScore = async (id,obj,dispatch,token) => {
             dispatch(authActions.login({token:token,user:data}));
             const fetchSentnce = await getSentences(data.user)
             dispatch(authActions.setSentences(fetchSentnce))
+            toast.success('המידע התעדכן בהצלחה')
+
             return status     
     
     }

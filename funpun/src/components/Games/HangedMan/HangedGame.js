@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 const HangedGame = props => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const isLogin = useSelector(state => state.auth.isAuthenticated)
     const user = useSelector(state => state.auth.user)
     const token = useSelector(state => state.auth.Token)
     const { englishwords, hebrewwords } = props
@@ -20,7 +21,7 @@ const HangedGame = props => {
     const [correctLetters, setCorrectLetters] = useState([])
     const [letter, setLetter] = useState('')
     const [msg, setMsg] = useState('')
-    const [myConffeti , setConffeti] = useState(false)
+    const [myConffeti, setConffeti] = useState(false)
 
 
 
@@ -49,17 +50,25 @@ const HangedGame = props => {
         if (next === englishwords.length - 1) {
             setNext(0)
             //update user's score!
-            const response = await updateScore(user.user,{game:'Hanged',type:wrongLetters},dispatch,token)
-            if (response===200) navigate('/')
+            if (isLogin) {
+                const response = await updateScore(user.user, { game: 'Hanged', type: wrongLetters }, dispatch, token)
+                if (response === 200) navigate('/')
+
+            }
+            else {
+                navigate('/')
+
+            }
+
             return
 
         }
-        setConffeti(prev=>!prev)
+        setConffeti(prev => !prev)
         setTimeout(() => {
             setNext(prev => prev + 1)
             setCorrectLetters([])
             setWrongLetters([])
-            setConffeti(prev=>!prev)
+            setConffeti(prev => !prev)
 
         }, 3000);
 
@@ -132,7 +141,7 @@ const HangedGame = props => {
 
     return (
         <div className={classes.game}>
-            {myConffeti && <Confetti tweenDuration={1}/>}
+            {myConffeti && <Confetti tweenDuration={1} />}
             <div className={classes.instructions}>
                 <h1>מה התרגום של המילה {' '}<span>{hebrewwords[next]}</span> באנגלית</h1>
             </div>
