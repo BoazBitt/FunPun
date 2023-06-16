@@ -12,6 +12,7 @@ import { FcPlus } from 'react-icons/fc'
 import { BsTrash3 } from 'react-icons/bs'
 import deleteClassroom from '../../functions/deleteClassroom'
 import { FcCheckmark, FcCancel } from 'react-icons/fc'
+import { ClientPath } from '../../functions/path'
 
 
 const Teacher = () => {
@@ -30,7 +31,7 @@ const Teacher = () => {
   }
   const links = []
   const genertaeLink = (classID, classLevel) => {
-    const link = `http://localhost:3000/Student?classroom=${classID}&classLevel=${classLevel}`
+    const link = `${ClientPath}/Student?classroom=${classID}&classLevel=${classLevel}`
     return link
   }
   for (let i = 0; i < classrooms.length; i++) {
