@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bab6302b-029f-40fd-b1d1-51e7f3b92859" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/funpun/src/components/Games/WordSearch/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/funpun/src/components/Games/WordSearch/Table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/funpun/src/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/funpun/src/components/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/funpun/src/components/overlays/MessageModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/funpun/src/components/overlays/MessageModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/funpun/src/components/overlays/overlay.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/funpun/src/components/overlays/overlay.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/funpun/src/components/speach/Speech2TextMobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/funpun/src/components/speach/Speech2TextMobile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/funpun/src/components/speach/SpeechRecognize.js" beforeDir="false" afterPath="$PROJECT_DIR$/funpun/src/components/speach/SpeechRecognize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/funpun/src/functions/updateScore.js" beforeDir="false" afterPath="$PROJECT_DIR$/funpun/src/functions/updateScore.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2RHj1JtCyZPjtuQBYP8S5U5rkPP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/WIN10/Desktop/FunPun Full Project/BackEnd"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bab6302b-029f-40fd-b1d1-51e7f3b92859" name="Changes" comment="" />
+      <created>1686913685186</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1686913685186</updated>
+    </task>
+    <servers />
+  </component>
+</project>

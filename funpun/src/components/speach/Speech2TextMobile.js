@@ -5,10 +5,19 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import on from '../assets/images/on-removebg-preview.png';
 import off from '../assets/images/off-removebg-preview.png';
 import Container from '../container/Container';
+import { useDispatch, useSelector } from "react-redux";
+import updateScore from '../../functions/updateScore';
+
+
 
 
 const Speech2TextMobile = props => {
   const navigation = useNavigate();
+  const dispatch = useDispatch();
+  const isLogin = useSelector(state => state.auth.isAuthenticated)
+  const user = useSelector(state => state.auth.user)
+  const token = useSelector(state => state.auth.Token)
+
   const { sentences } = props
   const [next, setNext] = useState(2);
   const [isVisible, setIsvisible] = useState(false);
@@ -55,14 +64,18 @@ const Speech2TextMobile = props => {
 
   useEffect(() => {
     if (transcript.toLowerCase().includes(sentences[next].content.toLowerCase())) {
-      setTimeout(() => {
-        alert("yes")
+      setTimeout(async () => {
         resetTranscript()
         if (next === sentences.length - 2) {
-          alert("end")
           setNext(0)
 
+          if (isLogin) {
+            const response = await updateScore(user.user, { game: 'Speech', type: 100 }, dispatch, token)
+            if (response === 200) navigation('/')
+        }
+        else {
           navigation('/')
+        }
 
         }
         else {

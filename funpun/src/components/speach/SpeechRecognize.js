@@ -4,18 +4,20 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import on from '../assets/images/on-removebg-preview.png'
 import off from '../assets/images/off-removebg-preview.png'
 import classes from './SpeechRecognize.module.scss'
+import { useDispatch, useSelector } from "react-redux";
+import updateScore from '../../functions/updateScore';
 
 const SpeechRecognize = props => {
-    const navigation = useNavigate();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { sentences } = props
-    const [next, setNext] = useState(0);
+    const [next, setNext] = useState(8);
     const [proceed, setProceed] = useState(false)
     const [listening, setListening] = useState(false);
     const [showImage, setShowImage] = useState(false);
-    // const [audioClue, setAudioClue] = useState('');
-    // useEffect(()=>{
-    //     setAudioClue(`../assets/FronAudiotFiles/${sentences[next]}.mp3`)
-    // },[next, sentences])
+    const isLogin = useSelector(state => state.auth.isAuthenticated)
+    const user = useSelector(state => state.auth.user)
+    const token = useSelector(state => state.auth.Token)
 
     const handleMouseDown = () => {
         setShowImage(true);
@@ -52,12 +54,18 @@ const SpeechRecognize = props => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [transcript])
 
-    const proceedHandler = () => {
+    const proceedHandler = async () => {
         setProceed(prev => !prev)
         resetTranscript()
         if (next === sentences.length - 2) {
             setNext(0)
-            navigation('/')
+            if (isLogin) {
+                const response = await updateScore(user.user, { game: 'Speech', type: 100 }, dispatch, token)
+                if (response === 200) navigate('/')
+            }
+            else {
+                navigate('/')
+            }
         }
         else {
             setNext(prev => prev + 2)

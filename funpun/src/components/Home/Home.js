@@ -21,6 +21,10 @@ const Home = () => {
   const superuser = user ? user.is_superuser : false
   const school = user ? user.school_name : null;
 
+
+
+
+   
   return (
     <>
       <Container className={classes.homeContainer} color={"#29215A"}>

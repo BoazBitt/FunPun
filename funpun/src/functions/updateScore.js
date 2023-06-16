@@ -60,22 +60,25 @@ const updateScore = async (id,obj,dispatch,token) => {
     let points = 0;  
     switch (obj.game) {
         case 'Card':
-            points = turnsCalc(obj.type)
+            points = turnsCalc(obj.type);
             break;
         case 'Jumble':
-            points = timeCalc(obj.type)
+            points = timeCalc(obj.type);
             break;
 
         case 'Hanged':
-            points = hangedCalc(obj.type)
+            points = hangedCalc(obj.type);
             break;
 
         case 'Whack':
-            points = whackCalc(obj.type)
+            points = whackCalc(obj.type);
             break;
 
         case 'Search':
-            points = 30
+            points = obj.type;
+            break;
+        case 'Speech':
+            points = obj.type;
             break;
         default:
             break;

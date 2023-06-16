@@ -1,6 +1,7 @@
 $primary-color: #080710;
 $secondary-color: #ffffff;
-.exit{
+
+.exit {
     position: absolute;
     top: 0;
     right: 0;
@@ -16,16 +17,17 @@ $secondary-color: #ffffff;
     border: none;
     background-color: transparent;
     border-radius: 12px;
-    
+
 }
-.exit:hover{
+
+.exit:hover {
     color: rgb(151, 151, 151);
 }
 
 .content {
     padding: 20px;
     color: black;
-    background-color: #1D3559   ;
+    background-color: #1D3559;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,7 +35,7 @@ $secondary-color: #ffffff;
     border-radius: 9px;
     max-width: 600px;
     width: 100%;
-  
+
 
     .Switch {
         display: inherit;
@@ -79,7 +81,7 @@ $secondary-color: #ffffff;
         color: white;
         font-size: 1.5rem;
     }
- 
+
 
     .Login {
         display: flex;
@@ -200,9 +202,9 @@ $secondary-color: #ffffff;
             color: black;
             font-size: 1.1rem;
             border: none;
-            
+
         }
-        
+
         textarea {
             border: none;
             border-radius: 12px;
@@ -215,7 +217,29 @@ $secondary-color: #ffffff;
         }
     }
 
-    // .Message {}
+    .Message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        flex-direction: column;
+      
+        .header {
+            font-size: 1.8rem;
+            border-bottom: #ffffff;
+            text-decoration: underline;
+                
+        }
+        
+        .msgcontent {
+            width: 70%;
+            direction: rtl;
+            text-align: center;
+            font-size: 1.5rem;
+
+        }
+  
+    }
 
     .social {
         margin-top: 30px;
@@ -270,7 +294,7 @@ $secondary-color: #ffffff;
             font-size: 1.6rem;
             background: green;
         }
-        
+
     }
 }
 
@@ -321,19 +345,20 @@ $secondary-color: #ffffff;
             }
 
         }
+
         .contactUs {
             align-items: center;
             justify-content: center;
-         
-    
-    
+
+
+
             input {
                 width: 254px;
                 height: 32px;
                 background: #ffffff;
-    
+
             }
-    
+
             textarea {
                 border-radius: 12px;
                 padding-right: 20px;
@@ -341,7 +366,7 @@ $secondary-color: #ffffff;
                 color: black;
                 width: 254px;
 
-    
+
             }
         }
 
@@ -358,7 +383,7 @@ $secondary-color: #ffffff;
             button {
                 width: 150px;
                 height: 30px;
-                background:yellowgreen;
+                background: yellowgreen;
             }
 
             button:hover {
@@ -382,13 +407,15 @@ $secondary-color: #ffffff;
             }
 
         }
-        .ChatBox{
+
+        .ChatBox {
             width: 220px;
-            .chat{
-                .reciver{
+
+            .chat {
+                .reciver {
 
                     margin-right: 0%;
-                    
+
                 }
             }
         }
@@ -427,20 +454,21 @@ $secondary-color: #ffffff;
             }
 
         }
+
         .contactUs {
             align-items: center;
             justify-content: center;
-         
-    
-    
+
+
+
             input {
                 width: 224px;
                 height: 25px;
                 background: #ffffff;
                 padding-right: 5px;
-    
+
             }
-    
+
             textarea {
                 border-radius: 12px;
                 padding-right: 20px;
@@ -448,13 +476,13 @@ $secondary-color: #ffffff;
                 color: black;
                 width: 224px;
 
-    
+
             }
         }
 
-        
 
-        
+
+
 
         .social {
 

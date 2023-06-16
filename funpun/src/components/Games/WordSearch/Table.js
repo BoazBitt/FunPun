@@ -70,7 +70,7 @@ const Table = props => {
                 setTimeout(async () => {
                     //update user's score!
                     if (isLogin) {
-                        const response = await updateScore(user.user, { game: 'Search', type: 0 }, dispatch, token)
+                        const response = await updateScore(user.user, { game: 'Search', type: 30 }, dispatch, token)
                         if (response === 200) navigate('/')
                     }
                     else {
