@@ -27,7 +27,7 @@ const Home = () => {
    
   return (
     <>
-      <Container className={classes.homeContainer} color={"#29215A"}>
+      <Container className={classes.homeContainer} color={"#FF0000"}>
         <Animated
           animationIn="fadeInLeft"
           animationOut="fadeOut"
