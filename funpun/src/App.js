@@ -6,7 +6,7 @@ import {
   useLocation,
   Navigate,
 } from "react-router-dom";
-import { useLayoutEffect, Profiler } from "react";
+import { useLayoutEffect, Profiler ,useState ,useEffect} from "react";
 
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -38,6 +38,23 @@ const Wrapper = ({ children }) => {
 
 
 const App = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 600);
+    };
+
+    // Add event listener to handle window resize
+    window.addEventListener('resize', handleResize);
+
+    // Initial check on component mount
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   function onRenderCallback(
     id, // the "id" prop of the Profiler tree that has just committed
     phase, // either "mount" (if the tree just mounted) or "update" (if it re-rendered)
@@ -57,7 +74,7 @@ const App = () => {
           <Wrapper>
             <Navbar />
             <ToastContainer
-              position="top-center"
+              position={isMobile ? 'middle-center' : 'top-center'}
               autoClose={4000}
               hideProgressBar={false}
               newestOnTop={false}
