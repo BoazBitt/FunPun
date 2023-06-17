@@ -8,7 +8,8 @@ const Content = () => {
         <Container>
             <div className={classes.top} >
                 <center className={classes.divv} id= "PageContent">
-                    <h1>FunPunברוכים הבאים ל </h1>
+                    <h1>  ברוכים הבאים </h1>
+
                     <h3>האפליקציה שתעזור לכם ללמוד מילים באנגלית </h3>
                     <h4>?אז איך זה עובד</h4>
                     <h5>
