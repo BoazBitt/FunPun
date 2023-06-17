@@ -56,13 +56,14 @@ const SignUpModal = props => {
       for (let i = 0; i < allUsrs.length; i++) {
         console.log(allUsrs[i])
         if (allUsrs[i].username === formData.username) {
-          return 'Username already exists';
+          return {value:false,msg:'Username already exists'};
         }
         if (allUsrs[i].email === formData.email) {
-          return 'Email already exists';
+          return {value:false,msg:'Email already exists'};
         }
       }
-      return null;
+      return {value:true};
+      ;
     }
   }
 
@@ -77,8 +78,8 @@ const SignUpModal = props => {
     }
     if (!formData.city || !(Cities.includes(formData.city.trim()))) { alert('Please enter exiting city'); return; }
     if (formData.password !== formData.password2) { alert('Passwords do not match'); return; }
-    const error = checkConflicts();
-    if (error===null) {alert(error); return}
+    const check = checkConflicts();
+    if (!check.value) {alert(check.msg); return}
 
     setSignUpData(formData)
   }
