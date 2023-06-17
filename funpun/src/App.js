@@ -74,7 +74,7 @@ const App = () => {
           <Wrapper>
             <Navbar />
             <ToastContainer
-              position={isMobile ? 'middle-center' : 'top-center'}
+              position= 'top-center'
               autoClose={4000}
               hideProgressBar={false}
               newestOnTop={false}
@@ -83,7 +83,7 @@ const App = () => {
               pauseOnFocusLoss
               draggable
               pauseOnHover
-              theme="black"
+              theme={isMobile? 'colored' : 'dark'}
             />
           </Wrapper>
           <Routes>
