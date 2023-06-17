@@ -37,12 +37,14 @@ const Test = () => {
 
 
     const calculateUserLevel = (score) => {
-        const totalLevels = Math.ceil(totalUnits / 5);  
-        const levelPercentage = score / 100;  
-        const userLevel = Math.floor(totalLevels * levelPercentage);
-      
+        const totalLevels = Math.ceil(totalUnits / 5);
+        const levelPercentage = score / 100;
+        let userLevel = Math.floor(totalLevels * levelPercentage);
+        if (userLevel===0) return 1
+        userLevel = userLevel - Math.floor(userLevel * 0.25)
+
         return userLevel;
-      };
+    };
 
 
     const handleSubmit = async (event) => {
@@ -62,7 +64,7 @@ const Test = () => {
         )
 
         const userLevel = calculateUserLevel(score)
-        const dataToSignUp = { ...signupData,userLevel:userLevel}
+        const dataToSignUp = { ...signupData, userLevel: userLevel }
         signUpUser(dataToSignUp).then((data) => {
             navigation('/')
 
