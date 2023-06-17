@@ -15,6 +15,7 @@ import Input from './SharedComponents/Input';
 import Closer from './SharedComponents/Closer';
 import { useSelector, useDispatch } from 'react-redux';
 import Exit from './SharedComponents/Exit';
+import getAllUsers from '../../functions/getAllusers'
 
 const SignUpModal = props => {
   const dispatch = useDispatch();
@@ -33,7 +34,33 @@ const SignUpModal = props => {
   const type = useSelector(state => state.modal.modalType)
   const [signupData, setSignUpData] = useState(null)
   const filteredCities = Cities.filter(city => city.startsWith(formData.city));
+  const [allUsrs , setAllUsrs] = useState=(null)
 
+
+  useEffect(()=>{
+    const getAll = async () =>{
+      const allUsers = await getAllUsers();
+      setAllUsrs(allUsers)
+    }
+    getAll()
+
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
+
+  const checkConflicts = () =>{
+    if (allUsrs){
+      for (let i = 0; i < allUsrs.length; i++) {
+        if (allUsrs[i].username === formData.username) {
+          return 'Username already exists';
+        }
+        if (allUsrs[i].email === formData.email) {
+          return 'Email already exists';
+        }
+      }
+      return null;
+    }
+  }
 
 
   const SignUpHandler = event => {
@@ -46,6 +73,8 @@ const SignUpModal = props => {
     }
     if (!formData.city || !(Cities.includes(formData.city.trim()))) { alert('Please enter exiting city'); return; }
     if (formData.password !== formData.password2) { alert('Passwords do not match'); return; }
+    const error = checkConflicts();
+    if (!error) alert(error)
 
     setSignUpData(formData)
   }
