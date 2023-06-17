@@ -2,7 +2,6 @@
 import React from 'react'
 import classes from './overlay.module.scss'
 import { useState, useEffect } from 'react';
-// import signUpUser from '../../functions/signUpUser'
 import { useNavigate } from 'react-router-dom';
 import { modalActions } from '../../store/modalSlicer';
 import ModalContent from './ModalContent';
@@ -21,11 +20,11 @@ const SignUpModal = props => {
   const dispatch = useDispatch();
   const navigation = useNavigate();
   const [formData, setFormData] = useState({
+    username: '',
+    email: '',
     first_name: '',
     last_name: '',
     gender: '',
-    username: '',
-    email: '',
     password: '',
     password2: '',
     city: '',
@@ -34,53 +33,102 @@ const SignUpModal = props => {
   const type = useSelector(state => state.modal.modalType)
   const [signupData, setSignUpData] = useState(null)
   const filteredCities = Cities.filter(city => city.startsWith(formData.city));
-  const [allUsrs , setAllUsrs] = useState(null)
+  const [allUsrs, setAllUsrs] = useState(null)
+  const [err, seterr] = useState('')
 
 
-  useEffect(()=>{
-    const getAll = async () =>{
+  useEffect(() => {
+    const getAll = async () => {
       const allUsers = await getAllUsers();
       setAllUsrs(allUsers)
     }
     getAll()
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    if (err) {
+      setTimeout(() => {
+        seterr('')
+      }, 2000);
+    }
+  }, [err])
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
-
-  useEffect(()=>{
+  useEffect(() => {
     console.log(allUsrs)
-  },[allUsrs])
-  const checkConflicts = () =>{
-    if (allUsrs){
+  }, [allUsrs])
+  const checkConflicts = () => {
+    if (allUsrs) {
       for (let i = 0; i < allUsrs.length; i++) {
         console.log(allUsrs[i])
         if (allUsrs[i].username === formData.username) {
-          return {value:false,msg:'Username already exists'};
+          return { value: false, msg: 'שם המשתמש תפוס' };
         }
         if (allUsrs[i].email === formData.email) {
-          return {value:false,msg:'Email already exists'};
+          return { value: false, msg: 'האימייל הזה תפוס' };
         }
       }
-      return {value:true};
+      return { value: true };
       ;
     }
+  }
+
+  const identify = key => {
+    switch (key) {
+      case 'first_name':
+        return 'שם פרטי'
+      case 'last_name':
+        return 'שם משפחה'
+      case 'username':
+        return 'שם משתמש'
+      case 'email':
+        return 'דואר אלקטרוני'
+      case 'gender':
+        return 'מין'
+      case 'password':
+        return 'סיסמא'
+      case 'password2':
+        return 'אימות סיסמא'
+      case 'city':
+        return 'עיר'
+      default:
+    }
+  }
+
+  const isValidEmail = (inputValue) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(inputValue)
   }
 
 
   const SignUpHandler = event => {
     event.preventDefault();
+    const check = checkConflicts();
     for (let key in formData) {
       if (formData[key] === '') {
-        alert(`Please fill ${key} field`)
+        const identifier = identify(key)
+        seterr(`אנא מלא את השדה ${identifier}`)
         return;
       }
     }
-    if (!formData.city || !(Cities.includes(formData.city.trim()))) { alert('Please enter exiting city'); return; }
-    if (formData.password !== formData.password2) { alert('Passwords do not match'); return; }
-    const check = checkConflicts();
-    if (!check.value) {alert(check.msg); return}
+    if (!(Cities.includes(formData.city.trim()))) {
+      seterr("אנא הכנס עיר בישראל בעברית");
+      return;
+    }
+    if (formData.password !== formData.password2) {
+      seterr("הסיסמאות אינן תואמות");
+      return;
+    }
 
+    if (!isValidEmail(formData.email)) {
+      seterr("אנא הכנס כתובת מייל תקינה");
+      return;
+    }
+
+    if (!check.value) {
+      seterr(check.msg);
+      return
+    }
     setSignUpData(formData)
   }
 
@@ -99,9 +147,6 @@ const SignUpModal = props => {
     }
     setFormData({ ...formData, [input]: e.target.value })
   }
-
-
-
 
   return (
     <div dir="rtl" className={classes.content}>
@@ -140,9 +185,6 @@ const SignUpModal = props => {
             }
           />
         </div>
-
-
-
         <Password
           onInputChange={onInputChange}
           input={'password'}
@@ -153,7 +195,6 @@ const SignUpModal = props => {
           input={'password2'}
           password={formData.password2}
           place='אימות סיסמא' />
-        {/* <Input name='city' place='עיר מגורים' value={formData.city} onInputChange={onInputChange} input='city' /> */}
         <input list='cities' placeholder='עיר מגורים' value={formData.city} onChange={(e) => { onInputChange(e, 'city') }} />
         <datalist id='cities'>
           {filteredCities.map((city) => (
@@ -163,6 +204,7 @@ const SignUpModal = props => {
 
       </ModalContent>
       <Social />
+      <div style={{ color: 'red' }}>{err}</div>
       <div className={classes.btns}>
         <Closer />
         <button onClick={SignUpHandler}>הירשם</button>
