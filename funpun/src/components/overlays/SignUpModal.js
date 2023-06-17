@@ -53,8 +53,8 @@ const SignUpModal = props => {
   },[allUsrs])
   const checkConflicts = () =>{
     if (allUsrs){
-    
       for (let i = 0; i < allUsrs.length; i++) {
+        console.log(allUsrs[i])
         if (allUsrs[i].username === formData.username) {
           return 'Username already exists';
         }
