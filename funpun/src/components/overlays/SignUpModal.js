@@ -78,7 +78,7 @@ const SignUpModal = props => {
     if (!formData.city || !(Cities.includes(formData.city.trim()))) { alert('Please enter exiting city'); return; }
     if (formData.password !== formData.password2) { alert('Passwords do not match'); return; }
     const error = checkConflicts();
-    if (!error) alert(error)
+    if (error===null) {alert(error); return}
 
     setSignUpData(formData)
   }
