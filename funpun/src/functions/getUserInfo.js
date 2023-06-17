@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 
 const getUserInfo = async (loginData) => {
+    console.log(`this is my path!!! ${path}`)
 
     try {
         const { data } = await axios.post(`${path}/auth`,
