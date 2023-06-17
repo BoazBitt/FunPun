@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import classes from './Admin.module.scss'
 import Container from '../container/Container'
 import addSentence from '../../functions/AddSentnce'
+import ALLSentences from '../../Data/sentences'
 
 const Admin = () => {
   const [sentence, setSentnce] = useState({
@@ -12,6 +13,12 @@ const Admin = () => {
     level: 0,
   })
   const [visable, setVisable] = useState({ state: false, option: '' })
+  const AddAll = async ()=>{
+    ALLSentences.forEach(async (obj)=>{
+      await addSentence(obj)
+    })
+
+  }
 
   return (
 
@@ -19,7 +26,7 @@ const Admin = () => {
       <div className={classes.Admin}>
         <div className={classes.head}>?מה תרצה לעשות</div>
         <div className={classes.btns}>
-          <span onClick={() => { setVisable({ state: true, option: 'Add' }) }}>Add Sentence</span>
+          <span onClick={() => { AddAll(); setVisable({ state: true, option: 'Add' }) }}>Add Sentence</span>
           <span onClick={() => { setVisable({ state: true, option: 'Approve' }) }}>Approve Teachers</span>
           <span onClick={() => { setVisable({ state: true, option: 'Action' }) }}>User Actions</span>
         </div>
