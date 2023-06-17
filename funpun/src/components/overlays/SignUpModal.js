@@ -48,8 +48,12 @@ const SignUpModal = props => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
+  useEffect(()=>{
+    console.log(allUsrs)
+  },[allUsrs])
   const checkConflicts = () =>{
     if (allUsrs){
+    
       for (let i = 0; i < allUsrs.length; i++) {
         if (allUsrs[i].username === formData.username) {
           return 'Username already exists';
