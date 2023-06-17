@@ -83,7 +83,6 @@ const updateScore = async (id,obj,dispatch,token) => {
         default:
             break;
     }
-    console.log(points)
     try {
         const { data ,status  } = await axios.put(`${path}/account/${id}/`,
             {
@@ -101,7 +100,8 @@ const updateScore = async (id,obj,dispatch,token) => {
     
     }
     catch (err) {
-        console.log("User Didnt Updated!")
+        toast.error("User Didnt Updated!")
+
     }
 
 

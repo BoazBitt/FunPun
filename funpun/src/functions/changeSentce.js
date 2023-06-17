@@ -1,5 +1,4 @@
 export const changeSentence = (sentences) => {
-    console.log(sentences)
     const newSentnce = []
     let idc = 1;
     for (let i = 0; i < sentences.length; i++) {

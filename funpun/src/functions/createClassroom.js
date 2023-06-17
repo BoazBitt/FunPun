@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 
 
 const createClassroom = async (ClassroomData) => {
-    console.log("in func!",ClassroomData)
 
     try {
         const { data } = await axios.post(`${path}/school/Classroom/`,

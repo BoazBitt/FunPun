@@ -65,9 +65,6 @@ const SignUpModal = props => {
     }
     setFormData({ ...formData, [input]: e.target.value })
   }
-  useEffect(() => {
-    console.log(formData)
-  }, [formData])
 
 
 

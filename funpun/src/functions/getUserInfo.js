@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 
 
 const getUserInfo = async (loginData) => {
-    console.log(`this is my path!!! ${path}`)
 
     try {
         const { data } = await axios.post(`${path}/auth`,
@@ -30,7 +29,6 @@ const getUserInfo = async (loginData) => {
     catch (err) {
         toast.error('קרתה שגיאה אנא נסה שוב')
 
-        console.log("Invalid UserName or Password")
     }
 
 

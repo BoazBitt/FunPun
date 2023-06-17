@@ -1,5 +1,6 @@
 import axios from "axios";
 import { path } from './path'
+import { toast } from "react-toastify";
 
 
 const createStudent = async (studentData) => {
@@ -15,7 +16,8 @@ const createStudent = async (studentData) => {
     
     }
     catch (err) {
-        console.log("Invalid Shit!")
+        toast.error('קרתה שגיאה אנא נסה שוב')
+
     }
 }
 

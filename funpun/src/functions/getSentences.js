@@ -1,5 +1,7 @@
 import axios from "axios";
 import { path } from './path'
+import { toast } from "react-toastify";
+
 
 const getSentences = async (id) => {
 
@@ -14,7 +16,9 @@ const getSentences = async (id) => {
     
     }
     catch (err) {
-        console.log("Cant Find Sentences!")
+        toast.error("Cant Find Sentences!")
+
+        
     }
 
 

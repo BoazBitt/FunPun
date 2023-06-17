@@ -1,5 +1,7 @@
 import axios from "axios";
 import { path } from './path'
+import { toast } from "react-toastify";
+
 
 const getAllMessages = async (sender,receiver) => {
 
@@ -19,7 +21,9 @@ const getAllMessages = async (sender,receiver) => {
 
     }
     catch (err) {
-        console.log("Cant Find Sentences!")
+        toast.error('קרתה שגיאה אנא נסה שוב')
+
+        
     }
 
 

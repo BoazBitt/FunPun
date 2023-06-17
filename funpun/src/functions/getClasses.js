@@ -1,8 +1,9 @@
 import axios from "axios";
 import { path } from './path'
+import { toast } from "react-toastify";
+
 
 const getClasses = async (id) => {
-    console.log('i am here!!!!',id)
 
 
     try {
@@ -16,7 +17,8 @@ const getClasses = async (id) => {
     
     }
     catch (err) {
-        console.log("Cant Find Classes!")
+        toast.error('קרתה שגיאה אנא נסה שוב')
+
     }
 
 

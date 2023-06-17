@@ -33,14 +33,11 @@ const SendMessage = () => {
     }, [])
 
     const sendMessage = async () => {
-        console.log('1')
         if (!message.length) return;
-        console.log('1')
         setLoader(prev => !prev)
+        // eslint-disable-next-line no-unused-vars
         const post = await postAMessage({ sender: sender, receiver: receiver, content: message });
-        console.log(post);
         setLoader(prev => !prev)
-        console.log('1')
         setMessage('')
         const updatesMsgs = await getAllMessages(sender, receiver);
         setAllMessages(updatesMsgs);

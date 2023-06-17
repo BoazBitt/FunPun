@@ -20,7 +20,6 @@ const SpeechRecognitionComponent = () => {
   // const dispatch = useDispatch()
   const { state } = useLocation();
   const sentences = state ? state.sentences : DUMMY;
-  console.log("initial", sentences)
 
   const [isMobile, setisMobile] = useState(false)
   const isTouchable = () => {

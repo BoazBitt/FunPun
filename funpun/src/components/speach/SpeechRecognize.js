@@ -38,10 +38,8 @@ const SpeechRecognize = props => {
 
     useEffect(() => {
         if (listening) {
-            console.log("Start Listening")
             SpeechRecognition.startListening({ continuous: true });
         } else {
-            console.log("Stop Listening")
             SpeechRecognition.stopListening();
         }
     }, [listening,]);

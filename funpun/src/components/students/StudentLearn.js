@@ -41,7 +41,6 @@ const StudentLearn = () => {
             setLoader(prev => !prev)
             createStudent({ ...studentInfo, classroom: classroom }).then((data) => {
                 getStudentSentence(classLevel).then((sentences) => {
-                    console.log(sentences)
                     dispatch(authActions.setSentences(sentences))
                     navigation('/Learn',{ state: { classLevel: classLevel } })
                 }).catch((err) => { console.error(err) })

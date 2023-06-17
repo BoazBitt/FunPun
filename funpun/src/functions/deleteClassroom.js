@@ -3,7 +3,6 @@ import { path } from './path'
 import { toast } from "react-toastify";
 
 const deleteClassroom = async (ClassroomData) => {
-    console.log("in func!",ClassroomData)
 
     try {
         const { data } = await axios.delete(`${path}/school/Classroom/${ClassroomData.classID}/`,

@@ -19,7 +19,6 @@ const Test = () => {
     const { state } = useLocation()
     const navigation = useNavigate()
     const signupData = state ? state.signupData : null
-    console.log('signupData', signupData)
 
 
     const arr = ['Pencil', 'Book', 'Desk']
@@ -65,7 +64,6 @@ const Test = () => {
         const userLevel = calculateUserLevel(score)
         const dataToSignUp = { ...signupData,userLevel:userLevel}
         signUpUser(dataToSignUp).then((data) => {
-            console.log(data)
             navigation('/')
 
         })

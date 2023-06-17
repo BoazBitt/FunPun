@@ -22,7 +22,6 @@ const AddSentence = async (sentnce) =>{
     }
     catch (err) {
         toast.error('קרתה שגיאה אנא נסה שוב')
-        console.log("Cant Find Sentences!")
     }
 
 }

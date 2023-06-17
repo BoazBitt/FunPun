@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 
 
 const postAMessage = async (msgData) => {
-    console.log("in func!",msgData)
 
     try {
         const { data } = await axios.post(`${path}/message/`,

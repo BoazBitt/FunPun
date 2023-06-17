@@ -42,7 +42,6 @@ const Teacher = () => {
   useEffect(() => {
 
     getClasses(user.user).then((classrooms) => {
-      console.log(data)
       dispatch(authActions.setClassrooms(classrooms))
     })
     setTimeout(() => {
@@ -61,10 +60,8 @@ const Teacher = () => {
       return
     }
     setLoader2(prev => !prev)
-    console.log(data)
     createClassroom({ ...data, teacher: user.user })
       .then((data) => {
-        console.log(data)
         getClasses(user.user).then((data) => {
           dispatch(authActions.setClassrooms(data))
           setVisable(prev => !prev)
@@ -86,10 +83,8 @@ const Teacher = () => {
   const deleteClass = (myclass) => {
     deleteClassroom(myclass)
       .then(response => {
-        console.log(response.data);
       })
       .catch(error => {
-        console.log(error.response);
       });
 
 

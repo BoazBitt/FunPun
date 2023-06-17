@@ -3,7 +3,6 @@ import { path } from './path'
 import { toast } from "react-toastify";
 
 const getSentences = async (signupData) => {
-    console.log("in func!",signupData)
 
     try {
         const { data } = await axios.post(`${path}/school/Teacher/`,

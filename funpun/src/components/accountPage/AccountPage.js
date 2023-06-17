@@ -53,7 +53,6 @@ const AccountPage = () => {
     useEffect(() => {
         async function fetchData() {
             const usrs = await getOtherUsers(user);
-            console.log(usrs); 
             setOtherUsers(usrs); 
             setLoader2(prev=>!prev)
           }

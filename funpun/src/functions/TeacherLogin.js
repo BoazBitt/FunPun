@@ -3,7 +3,6 @@ import { path } from './path'
 import { toast } from "react-toastify";
 
 const TeacherLogin = async (loginData) => {
-    console.log("in Login:",loginData)
 
     try {
         const { data } = await axios.post(`${path}/auth`,
@@ -15,7 +14,6 @@ const TeacherLogin = async (loginData) => {
                 password: loginData.password
             },);        
         const token = data.token;
-        console.log('token: ',token)
         const response = await axios.get(`${path}/school/Teacher/${loginData.username}/`,
         {
             headers: {

@@ -91,10 +91,7 @@ const Speech2TextMobile = props => {
 
   // useEffect(()=>{alert(offCounter)},[offCounter])
 
-  useEffect(() => {
-    console.log("off:", offCounter)
-    console.log("on:", onCounter)
-  }, [onCounter, offCounter])
+
 
   if (!browserSupportsSpeechRecognition) {
     return <div>Browser does not support Speech Recognition.</div>;

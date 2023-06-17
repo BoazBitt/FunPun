@@ -70,7 +70,6 @@ const SchoolModal = () => {
   }
 
   const clickhandler = (type) => {
-    console.log(type)
     setLoader(prev => !prev)
     if (type === 'SignUp') {
       setFormData(dataUp)
@@ -87,7 +86,6 @@ const SchoolModal = () => {
         if (state) {
 
           TeacherSignUp(formData).then((data) => {
-            console.log(data)
             setLoader(prev => !prev)
             dispatch(modalActions.closeModal())
           })
@@ -95,7 +93,6 @@ const SchoolModal = () => {
         }
         else {
           const teacher = await TeacherLogin(formData);
-          console.log(teacher)
           setLoader(prev => !prev)
           dispatch(authActions.login(teacher))
           dispatch(modalActions.closeModal())

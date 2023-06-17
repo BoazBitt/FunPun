@@ -10,9 +10,6 @@ const HangedMan = () => {
     const initialState = state ? state.sentences : DUMMY;
     const englishwords = initialState.filter((element, index) => index % 2 === 0).map(obj => obj.content.toLocaleLowerCase());
     const hebrewwords = initialState.filter((element, index) => index % 2 !== 0).map(obj => obj.content.toLocaleLowerCase());
-    
-    console.log('englishwords',englishwords)
-    console.log('hebrewwords',hebrewwords)
     return (
         <Container color={"#29215A"}>
             <div className={classes.hanged}>

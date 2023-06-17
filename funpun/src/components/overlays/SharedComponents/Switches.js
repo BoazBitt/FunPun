@@ -14,7 +14,6 @@ const Switches = () => {
 
   return (
     <div className={classes.Switch}>
-      {console.log()}
       {type === 'Login' ? (
         <>
           {/* <button disabled>התחברות</button> */}

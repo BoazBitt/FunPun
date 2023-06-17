@@ -47,7 +47,6 @@ const LoginModal = () => {
         const fetchData = async () => {
             if (loginData) {
                 const userData = await getUserInfo(loginData);
-                console.log(userData)
                 dispatch(authActions.login(userData));
                 dispatch(modalActions.closeModal())
                 const fetchSentnce = await getSentences(userData.user.user)

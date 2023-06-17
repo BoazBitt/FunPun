@@ -1,5 +1,6 @@
 import axios from "axios";
 import { path } from './path'
+import { toast } from "react-toastify";
 
 const getStudentSentence = async (level) => {
 
@@ -17,7 +18,8 @@ const getStudentSentence = async (level) => {
     
     }
     catch (err) {
-        console.log("Cant Find Sentences!")
+        toast.error('קרתה שגיאה אנא נסה שוב')
+
     }
 
 

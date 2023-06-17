@@ -26,7 +26,6 @@ const WordJumle = props => {
   const [done, setDone] = useState(0);
 
   const setTime = time => {
-    console.log('in setTime', time);
     setTotalTime((prev) => prev + time)
   }
 
