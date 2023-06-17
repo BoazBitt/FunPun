@@ -34,7 +34,7 @@ const SignUpModal = props => {
   const type = useSelector(state => state.modal.modalType)
   const [signupData, setSignUpData] = useState(null)
   const filteredCities = Cities.filter(city => city.startsWith(formData.city));
-  const [allUsrs , setAllUsrs] = useState=(null)
+  const [allUsrs , setAllUsrs] = useState(null)
 
 
   useEffect(()=>{
