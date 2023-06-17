@@ -9,6 +9,7 @@ const Content = () => {
             <div className={classes.top} >
                 <center className={classes.divv} id= "PageContent">
                     <h1>  ברוכים הבאים </h1>
+                    <h1>  FunPun  </h1>
 
                     <h3>האפליקציה שתעזור לכם ללמוד מילים באנגלית </h3>
                     <h4>?אז איך זה עובד</h4>
