@@ -26,12 +26,20 @@ class AccountViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def list(self, request, *args, **kwargs):
-        level = request.query_params.get('userLevel')
-        city = request.query_params.get('city')
-        userid = request.query_params.get('id')
-        accounts = Account.objects.filter(userLevel=level, city=city).exclude(user_id=userid)
-        serializer = self.get_serializer(accounts, many=True)
-        return Response(serializer.data)
+        if 'userLevel' in request.query_params:
+            level = request.query_params.get('userLevel')
+            city = request.query_params.get('city')
+            userid = request.query_params.get('id')
+            accounts = Account.objects.filter(userLevel=level, city=city).exclude(user_id=userid)
+            serializer = self.get_serializer(accounts, many=True)
+            return Response(serializer.data)
+
+        users = User.objects.all()
+        data = [{'email': user.email, 'username': user.username} for user in users]
+        return Response(data)
+
+
+
 
     def update(self, request, *args, **kwargs):
         user = User.objects.get(id=kwargs['pk'])

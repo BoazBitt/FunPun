@@ -1,6 +1,6 @@
 import classes from './overlay.module.scss'
 import Closer from './SharedComponents/Closer'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Input from './SharedComponents/Input'
 import { useDispatch } from 'react-redux'
 import { modalActions } from '../../store/modalSlicer'
@@ -12,12 +12,17 @@ const ContactUsModal = () => {
   const dispatch = useDispatch();
 
   const [contactData, setContactData] = useState({ name: '', email: '', message: '' })
+  const [error, setError] = useState("")
 
   const onInputChange = (e, input) => {
     setContactData({ ...contactData, [input]: e.target.value })
   }
 
   const sendContactData = () => {
+    if(!contactData.name||!contactData.email||!contactData.message||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactData.email)) {
+      setError("אנא מלאו את כל השדות")
+      return
+    }
 
     dispatch(modalActions.openModal(
       { modalType: 'Message',
@@ -36,6 +41,9 @@ const ContactUsModal = () => {
 
 
   }
+  useEffect(()=>{
+    setError('')
+  },[contactData])
 
  
 
@@ -52,6 +60,7 @@ const ContactUsModal = () => {
               <textarea value={contactData.message} onChange={(e) => { onInputChange(e, 'message') }} placeholder='שלח לנו הודעה' />
             </div>
           </div>
+          <span style={{textAlign:'center',color:'red'}}>{error}</span>
           <div className={classes.btns}>
             <Closer />
             <button onClick={sendContactData}>שלח</button>
