@@ -22,9 +22,13 @@ const HangedGame = props => {
     const [letter, setLetter] = useState('')
     const [msg, setMsg] = useState('')
     const [myConffeti, setConffeti] = useState(false)
+    const [numOfErros, setNumOfErros] = useState(0)
 
 
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     const isCharCorrect = char => correctLetters.includes(char);
 
@@ -46,12 +50,20 @@ const HangedGame = props => {
         }
         setLetter('')
     }
-    const procced = async () => {
+    const procced = async (isWrong) => {
+        if (isWrong) {
+            setNext(prev => prev + 1)
+            setCorrectLetters([])
+            setWrongLetters([])
+            setNumOfErros(prev=>prev+1)
+            return
+
+        }
         if (next === englishwords.length - 1) {
             setNext(0)
             //update user's score!
             if (isLogin) {
-                const response = await updateScore(user.user, { game: 'Hanged', type: wrongLetters }, dispatch, token)
+                const response = await updateScore(user.user, { game: 'Hanged', type: numOfErros }, dispatch, token)
                 if (response === 200) navigate('/')
 
             }
@@ -85,7 +97,7 @@ const HangedGame = props => {
     }, [correctLetters])
     useEffect(() => {
         if (wrongLetters.length === 6) {
-            procced();
+            procced(true);
             setGussedRight(prev => prev + 1);
 
         }
@@ -113,7 +125,7 @@ const HangedGame = props => {
 
     useEffect(() => {
         if (checkDone()) {
-            procced();
+            procced(false);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [gussedRight])

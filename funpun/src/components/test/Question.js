@@ -1,4 +1,4 @@
-
+import classes from './Test.module.scss'
 
 const Question = props => {
 
@@ -17,35 +17,35 @@ const Question = props => {
 
 
     return (
-        <div>
-            <p style={{ fontSize: '25px' }}>  {number})  &nbsp;{question}</p>
+        <div className={classes.question}>
+            <p >  {number})  &nbsp;{question}</p>
             {notes.map((note => <p key={Math.random()}>{note}<br /></p>))}
-            {type === 'open' &&
+            {type === 'open' &&<div className={classes.inputContainer}>
                 <input
                     required
                     size={maxchars}
                     maxLength={maxchars}
                     type="text"
                     value={props.answers[id]}
-                    onChange={e => props.handleAnswerChange(id, e.target.value)} />
+                    onChange={e => props.handleAnswerChange(id, e.target.value)} /></div>
             }
-            {type === 'radio' && <>{answer.map((option, index) => (
+            {type === 'radio' && <div className={classes.inputContainer}>{answer.map((option, index) => (
                 <div key={index}><input type="radio"
                     id={option}
                     value={option}
                     name="check"
                     onChange={e => props.handleAnswerChange(id, e.target.value)} />
-                    <label htmlFor={option}>{option}</label><br /><br /></div>))}</>}
-            {type === 'select' && <>
+                    <label htmlFor={option}>{option}</label><br /><br /></div>))}</div>}
+            {type === 'select' && <div className={classes.inputContainer}>
                 <select value={props.answers[id]} onChange={e => props.handleAnswerChange(id, e.target.value)}>
                     <option value="">בחר...</option>
                     {options}
                 </select>
-            </>
+            </div>
             }
-            {type === 'text' && <>
+            {type === 'text' && <div className={classes.inputContainer}>
                 <textarea value={props.answers[id]} onChange={e => props.handleAnswerChange(id, e.target.value)}></textarea>
-            </>}
+            </div>}
             <div style={{ fontWeight: 'bold', color: 'red' }} ><br />{props.errs[id]}<br /></div>
 
         </div>

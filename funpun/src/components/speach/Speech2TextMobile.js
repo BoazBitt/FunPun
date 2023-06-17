@@ -7,6 +7,8 @@ import off from '../assets/images/off-removebg-preview.png';
 import Container from '../container/Container';
 import { useDispatch, useSelector } from "react-redux";
 import updateScore from '../../functions/updateScore';
+import Confetti from 'react-confetti'
+
 
 
 
@@ -17,7 +19,7 @@ const Speech2TextMobile = props => {
   const isLogin = useSelector(state => state.auth.isAuthenticated)
   const user = useSelector(state => state.auth.user)
   const token = useSelector(state => state.auth.Token)
-
+  const [myConffeti, setConffeti] = useState(false)
   const { sentences } = props
   const [next, setNext] = useState(2);
   const [isVisible, setIsvisible] = useState(false);
@@ -48,7 +50,7 @@ const Speech2TextMobile = props => {
   useEffect(() => {
     let interval;
     if (isVisible) {
-      SpeechRecognition.startListening({ continuous: true });
+      SpeechRecognition.startListening({ continuous: true, language: 'en-US' });
       interval = setInterval(() => {
         setOnCounter(prevCounter => prevCounter - 1);
       }, 1000);
@@ -63,8 +65,11 @@ const Speech2TextMobile = props => {
   }, [isVisible]);
 
   useEffect(() => {
+
     if (transcript.toLowerCase().includes(sentences[next].content.toLowerCase())) {
+      setConffeti(prev => !prev)
       setTimeout(async () => {
+        setConffeti(prev => !prev)
         resetTranscript()
         if (next === sentences.length - 2) {
           setNext(0)
@@ -72,17 +77,17 @@ const Speech2TextMobile = props => {
           if (isLogin) {
             const response = await updateScore(user.user, { game: 'Speech', type: 100 }, dispatch, token)
             if (response === 200) navigation('/')
+          }
+          else {
+            navigation('/')
+          }
         }
-        else {
-          navigation('/')
-        }
+        setNext(prev => prev + 2)
 
-        }
-        else {
-          setNext(prev => prev + 2)
-        }
 
-      }, 1500);
+
+
+      }, 2000);
 
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -100,8 +105,10 @@ const Speech2TextMobile = props => {
   return (
     <Container color={"#29215A"}>
       <div className={classes.container}>
+        {myConffeti && <Confetti tweenDuration={1} />}
         <div className={classes.instruction}>
-          : "איך אומרים באנגלית את המילה "{sentences[next + 1].content}
+
+          <h1>מה התרגום של המילה {' '}<span>{sentences[next + 1].content}</span> באנגלית</h1>
         </div>
         <div className={classes.record}>
 
@@ -116,7 +123,8 @@ const Speech2TextMobile = props => {
                 <img onClick={clickHandler} src={off} alt='off' />
               </div>
               <div className={classes.btn}>
-                <button onClick={resetTranscript}>Reset</button>
+                {transcript && <button onClick={resetTranscript}>אפס</button>
+                }
               </div>
             </div>
           ) : (
@@ -132,7 +140,7 @@ const Speech2TextMobile = props => {
 
         </div>
         <div className={classes.transcript}>
-          <p> Transcript:{transcript}</p>
+          <p> {transcript}:תשובה</p>
         </div>
       </div>
     </Container>

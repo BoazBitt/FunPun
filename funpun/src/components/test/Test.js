@@ -162,7 +162,7 @@ const Test = () => {
             answer: {},
             correctAnswer: 'מים',
             notes: [],
-            restrictions: {}, err: ''
+            restrictions: {max: 10}, err: ''
         },
         {
             id: 'q8',
@@ -190,7 +190,7 @@ const Test = () => {
             number: '10',
             question: `התאם את המילה ${Choice2} להגדרה הנכונה`,
             type: 'select',
-            answer: { "apple": 'פרי עגול הקיים בצבעים אדום,צהוב או ירוק', 'chair': 'רהיט המיועד בעיקר לישיבה הבנוי ממשטח וארבע רגליים', 'computer': 'מכשיר חשמלי המסוגל לשמור ולעבד מידע' },
+            answer: { "apple": 'פרי עגול הקיים בצבעים אדום,צהוב או ירוק', 'chair': 'רהיט המיועד בעיקר לישיבה ', 'computer': 'מכשיר חשמלי המסוגל לשמור ולעבד מידע' },
             correctAnswer: `${Choice2}`,
             notes: [],
             restrictions: {}, err: ''
@@ -215,7 +215,7 @@ const Test = () => {
                 <div className={classes.instruction}>
                     <p>על מנת להשלים את ההרשמה </p>
                     <p>אנא ענו על השאלון על מנת שנוכל לקבוע את הרמה שלכם</p>
-                    <h4>אם יש שאלה שאתם לא יודעים השאירו את השדה ריק</h4>
+                    <h4 style={{textAlign:'center'}} >אם יש שאלה שאתם לא יודעים השאירו את השדה ריק</h4>
                 </div>
                 <div className={classes.questions}>
                     <form color={'black'}>

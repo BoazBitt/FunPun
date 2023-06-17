@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500&family=Rubik+Vinyl&display=swap");
 
 .game {
+  width: 80vw;
   display: flex;
   height: 70%;
   flex-direction: column;
@@ -12,9 +13,9 @@
     justify-content: center;
     height: 50%;
     .sentence {
-
+      text-align: center;
       font-family: "Fredoka", sans-serif;
-      font-size: 100px;
+      font-size: 75px;
       transition: 0.2s;
       .word {
         animation: wordEnter 0.2s ease-in forwards;
@@ -41,7 +42,7 @@
   }
 
   100% {
-    font-size: 110px;
+    font-size: 80px;
     font-weight: bold;
     color: yellow;
   }

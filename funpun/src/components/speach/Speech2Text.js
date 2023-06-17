@@ -29,15 +29,6 @@ const SpeechRecognitionComponent = () => {
 
   }
 
-  // useEffect(() => {
-  //   if (isMobile) {
-  //     dispatch(modalActions.openModal({ Header: 'הוראות', content: mobileInstruct }))
-
-  //   }
-  //   else {
-  //     dispatch(modalActions.openModal({ Header: 'הוראות', content: pcInstruct }))
-  //   }
-  // }, [isMobile])
 
 
 
@@ -52,7 +43,7 @@ const SpeechRecognitionComponent = () => {
   }, [])
   if (isMobile) {
     return <Container color={"#29215A"}>
-      <Speech2TextMobile sentences={sentences}/>
+      <Speech2TextMobile sentences={sentences} />
 
     </Container>
   }
