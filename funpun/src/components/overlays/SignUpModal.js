@@ -203,7 +203,7 @@ const SignUpModal = props => {
         </datalist>
 
       </ModalContent>
-      <Social />
+      {/* <Social /> */}
       <div style={{ color: 'red' }}>{err}</div>
       <div className={classes.btns}>
         <Closer />
