@@ -41,7 +41,7 @@ const Board = () => {
     update()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, done, navigate, token, user?.user])
+  }, [dispatch, done, navigate, token, user])
   return (
 
     <div className={classes.top}>
