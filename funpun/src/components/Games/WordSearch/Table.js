@@ -82,7 +82,7 @@ const Table = props => {
         }
         update()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dispatch, hebBank, hebrewwords, navigate, token, user.user])
+    }, [dispatch, hebBank, hebrewwords, navigate, token, user])
 
 
     const foundBank = (word) => hebBank.includes(word);
