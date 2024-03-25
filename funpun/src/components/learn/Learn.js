@@ -7,7 +7,7 @@ import { changeSentence } from "../../functions/changeSentce";
 import DUMMY_SENTENCES from "../../Data/DUMMY_SENTENCES";
 
 
-const allgames = ['CardGame','Jumble','Whack' ,'WordSearch','Hanged'];
+const allgames = ['Whack'];
 const NUMOFGAMES = allgames.length;
 
 //'CardGame','Jumble','Whack' ,'WordSearch','Hanged'
