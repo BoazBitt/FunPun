@@ -58,8 +58,6 @@ If you encounter any problems while using Fun-Pun, refer to the following troubl
 2. Verify that the database connection is properly configured.
 
 
-![images](https://github.com/BoazBitt/FunPun/assets/73490112/84ff61fe-b67c-4c9d-9010-76cb1a697a2d)
-
 3. Make sure the backend and frontend servers are running.
 4. Refer to the [FAQ](#frequently-asked-questions-faq) section for commonly asked questions and solutions.
 
